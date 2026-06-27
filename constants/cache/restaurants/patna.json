@@ -1,0 +1,1284 @@
+[
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "R R Complex, Sadhan Path, Ramnagri More, Ashiana - Digha Rd, Ashiana, Magistrate Colony, Rukanpura, Patna, Bihar 800025, India",
+    "geometry": {
+      "location": {
+        "lat": 25.6150726,
+        "lng": 85.0814884
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6164092802915,
+          "lng": 85.0828944302915
+        },
+        "southwest": {
+          "lat": 25.6137113197085,
+          "lng": 85.08019646970848
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Patna Darbar Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2300"
+          },
+          "open": {
+            "day": 0,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2300"
+          },
+          "open": {
+            "day": 1,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2300"
+          },
+          "open": {
+            "day": 2,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2300"
+          },
+          "open": {
+            "day": 3,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2300"
+          },
+          "open": {
+            "day": 4,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2300"
+          },
+          "open": {
+            "day": 5,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2300"
+          },
+          "open": {
+            "day": 6,
+            "time": "1100"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 11:00 AM – 11:00 PM",
+        "Tuesday: 11:00 AM – 11:00 PM",
+        "Wednesday: 11:00 AM – 11:00 PM",
+        "Thursday: 11:00 AM – 11:00 PM",
+        "Friday: 11:00 AM – 11:00 PM",
+        "Saturday: 11:00 AM – 11:00 PM",
+        "Sunday: 11:00 AM – 11:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/114969606227550678882\">Patna Darbar Restaurant</a>"
+        ],
+        "photo_reference": "AaVGc3lkugfV0wLubvGscdjV11YtR0XSpZA9OPo8Cu1X9qKanWAKKuZFRsmDsrtOvjoHt8YsEZawYi8eR4_D-gSkoT8NUfhuYWFZ6-_XAJi8cZdvf92E0w7Km-X7dlpZADsL897lqWRMRd9u3PckCV-A2X-Hskz3wYU_hK1R-GDQsvA256g_fdkd9SFkGb2YCwB5lRNputGftwxc4UsBY7kc5riOqFjRkfjHLb1LnNk_fLHemCoxebEQQKy5pM_1UTYnJhCjFCsUx1BNkYQD7-DD1QyH5rzpqQ7MZ3rzRLWVhA4jbwoDnhaP5Xc2Mak7cz-4wsQwGLbyE1yXab_4-hbsHbgwNrtlKomDHIkMt9fGlriKJXtOyeaq0yPtxL4EJj_Pw81P3m5SRFYQQogwmzTKmR7dSEugh1lQA1eeSFQovvQATQ",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJo1UrXwBX7TkRv5mnXpiO6Lk",
+    "plus_code": {
+      "compound_code": "J38J+2H Patna, Bihar, India",
+      "global_code": "7MQ7J38J+2H"
+    },
+    "rating": 4.8,
+    "reference": "ChIJo1UrXwBX7TkRv5mnXpiO6Lk",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 1680,
+    "formatted_phone_number": "091428 05071"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "8th floor, Patna one plaza, New Dak Bunglow Rd, churaha, Fraser Road Area, Patna, Bihar 800001, India",
+    "geometry": {
+      "location": {
+        "lat": 25.6099069,
+        "lng": 85.1369601
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6113104802915,
+          "lng": 85.1383177302915
+        },
+        "southwest": {
+          "lat": 25.6086125197085,
+          "lng": 85.1356197697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Foresto Paradise",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2330"
+          },
+          "open": {
+            "day": 0,
+            "time": "1030"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2330"
+          },
+          "open": {
+            "day": 1,
+            "time": "1030"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2330"
+          },
+          "open": {
+            "day": 2,
+            "time": "1030"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2330"
+          },
+          "open": {
+            "day": 3,
+            "time": "1030"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2330"
+          },
+          "open": {
+            "day": 4,
+            "time": "1030"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2330"
+          },
+          "open": {
+            "day": 5,
+            "time": "1030"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2330"
+          },
+          "open": {
+            "day": 6,
+            "time": "1030"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 10:30 AM – 11:30 PM",
+        "Tuesday: 10:30 AM – 11:30 PM",
+        "Wednesday: 10:30 AM – 11:30 PM",
+        "Thursday: 10:30 AM – 11:30 PM",
+        "Friday: 10:30 AM – 11:30 PM",
+        "Saturday: 10:30 AM – 11:30 PM",
+        "Sunday: 10:30 AM – 11:30 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 960,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/113707083272909665707\">Foresto Paradise</a>"
+        ],
+        "photo_reference": "AaVGc3ku_Es0bB6gvGdkB7lKXTdPGpvQHnYRJyJGc9eB2HI99nLgZ8euq9eM1YjIg8HjqhzrD1jReOrkPI223R8zhFSu6hKWCFvsv1PtWIx_AA-z5_TQqlI5CnGR6LpK6dD8vstVYOFQhq_xo1AOXhm0a-9Jcg7Bd5Z-3oExNm32SwqNZ-jmruIgeR_Nta7dpoGyVn1Fa04bt6X9G6sE8MYa7Fl2-OmZLEUkMUjT--U9FsOhzLaDxaGs-7N8ZxHTkD1AyPtxvemZc4ktc9Oo2PO2V3o0AeUNiO_MwVSVtZPLTuCmSDs7COZDLYfKZ25SHzmZ0wSJZ1c7gjxZ_UiKN3rFerCmFQvaS0FGA7qV3g8Vy-dE5rXIleKOnPWzkWDCToPIAYdt9S8STZdTYQcJdmXZABW4A-crgsNtMXeQetf_RTJYUg",
+        "width": 1280
+      }
+    ],
+    "place_id": "ChIJpx05OkNY7TkR3jxmtSYIar4",
+    "plus_code": {
+      "compound_code": "J45P+XQ Patna, Bihar, India",
+      "global_code": "7MQ7J45P+XQ"
+    },
+    "price_level": 2,
+    "rating": 4.2,
+    "reference": "ChIJpx05OkNY7TkR3jxmtSYIar4",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 12009,
+    "formatted_phone_number": "092644 55504"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "6th Floor P & M Mall, Patliputra industrial area, Patliputra Kurji Rd, Patliputra Industrial Area, Patliputra Colony, Patna, Bihar 800013, India",
+    "geometry": {
+      "location": {
+        "lat": 25.6341944,
+        "lng": 85.1063157
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6353308302915,
+          "lng": 85.10774923029152
+        },
+        "southwest": {
+          "lat": 25.6326328697085,
+          "lng": 85.1050512697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "17 Degrees",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2230"
+          },
+          "open": {
+            "day": 0,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2230"
+          },
+          "open": {
+            "day": 1,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2230"
+          },
+          "open": {
+            "day": 2,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2230"
+          },
+          "open": {
+            "day": 3,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2230"
+          },
+          "open": {
+            "day": 4,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2230"
+          },
+          "open": {
+            "day": 5,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2230"
+          },
+          "open": {
+            "day": 6,
+            "time": "1200"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 12:00 – 10:30 PM",
+        "Tuesday: 12:00 – 10:30 PM",
+        "Wednesday: 12:00 – 10:30 PM",
+        "Thursday: 12:00 – 10:30 PM",
+        "Friday: 12:00 – 10:30 PM",
+        "Saturday: 12:00 – 10:30 PM",
+        "Sunday: 12:00 – 10:30 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 1472,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/110765790958952657828\">17 Degrees</a>"
+        ],
+        "photo_reference": "AaVGc3nkk6Jc2n6wiWhATSr9RP7OwzUNmfLE_7oMCfLVzoKQ9aPMm-JeMhH9fXqCseQoeUY8DiYw-xl4zk-_xFIbp2W1EQF_OF9ZJSTIcEHMA47D_dheN2fGSNvN3KsVbvfyzESip7sNJuMSHceLBz4zT3-AbzWcjVoy2eJxbyNCpO5lCuQ1QskILJ3OPb7ZV3BUHc4DDg1ki5BROKMDl62Pz1pj3Go4rdAvPgc6T-GTz57OeuhL8NV4IRO6DS6mbiQskewQ-0rTcNvEXIJbg2qPRpKo0kvz85ukUYdRMM-ZjSLHVopTLWcalii21nDfmTbsel_GP9DQBMJcdsbiKrV6UmuHjrpTz6Umc-3TkWJiAS5nR5fSOIMqwBWv3uGfABQuAEsi-JTpdQZB_cEwhRKxUKunzOv-VHXHxxW_2b9CKsel7ji9d4hzBFU_0lMObkII",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJ3Q-BCnBY7TkR89rKxSfISyw",
+    "plus_code": {
+      "compound_code": "J4M4+MG Patna, Bihar, India",
+      "global_code": "7MQ7J4M4+MG"
+    },
+    "price_level": 3,
+    "rating": 4.3,
+    "reference": "ChIJ3Q-BCnBY7TkR89rKxSfISyw",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 2765,
+    "formatted_phone_number": "092048 51717"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "B/77 P.C.Colony, panch shiv mandir, Road, Housing Board Colony, Kankarbagh, Patna, Bihar 800020, India",
+    "geometry": {
+      "location": {
+        "lat": 25.5993802,
+        "lng": 85.1480887
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6007064802915,
+          "lng": 85.14935948029151
+        },
+        "southwest": {
+          "lat": 25.5980085197085,
+          "lng": 85.1466615197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "The Glass Box",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2300"
+          },
+          "open": {
+            "day": 0,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2300"
+          },
+          "open": {
+            "day": 1,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2300"
+          },
+          "open": {
+            "day": 2,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2300"
+          },
+          "open": {
+            "day": 3,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2300"
+          },
+          "open": {
+            "day": 4,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2300"
+          },
+          "open": {
+            "day": 5,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2300"
+          },
+          "open": {
+            "day": 6,
+            "time": "1200"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 12:00 – 11:00 PM",
+        "Tuesday: 12:00 – 11:00 PM",
+        "Wednesday: 12:00 – 11:00 PM",
+        "Thursday: 12:00 – 11:00 PM",
+        "Friday: 12:00 – 11:00 PM",
+        "Saturday: 12:00 – 11:00 PM",
+        "Sunday: 12:00 – 11:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 845,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/102845530916269966774\">The Glass Box</a>"
+        ],
+        "photo_reference": "AaVGc3kqywdWa3OZidg0CSdRHrrSQqqpgahKTTLt944YNkTgGIHqwIst_HEXdPdWW6tuA-1FX93Kcl786hGS4R7AmJpIKxlxpteOHkuOZoEmUmi4LTMxVbZUnWiCo9g1zPyBKIFCWPGVKHwYiM1n-kRFttLzHAMCGc-nkMqrjQV15mUkXVev2IoIkb25pO4HRE95WCa4UwLKtzipJuj3jOk94ve_6aF7SGiGk4C2fqdVpbtT1sQKXVgPTMbAmQmgwf7HoTWmhbbZYPXY3kPCftNO1qTZ5cMfL2E3zp-8lE-Fgqhq-HKVKuCN7TjlFIuqhgOGz_Dc3Xcb4nLgp1Bn3LMMt6J9s0qA0_nJWF0MC_OCLJdjGYUk4naYZFBVhtdDey3ZCJav5BgI1GoMRrV49LqRlly6CuM_81kj4o6vkqkkAI8i5Q",
+        "width": 1504
+      }
+    ],
+    "place_id": "ChIJBzAka5ZZ7TkRJ4S6H7wPTh8",
+    "plus_code": {
+      "compound_code": "H4XX+Q6 Patna, Bihar, India",
+      "global_code": "7MQ7H4XX+Q6"
+    },
+    "rating": 4.4,
+    "reference": "ChIJBzAka5ZZ7TkRJ4S6H7wPTh8",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 2533,
+    "formatted_phone_number": "090655 96966"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "above of One+ Mobile, Hello Restaurant & Cafe, Boring Rd, near Panchmukhi Hanuman Mandir, Sri Krishna Nagar, Kidwaipuri, Patna, Bihar 800001, India",
+    "geometry": {
+      "location": {
+        "lat": 25.6194528,
+        "lng": 85.1226519
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6208533802915,
+          "lng": 85.1239822802915
+        },
+        "southwest": {
+          "lat": 25.6181554197085,
+          "lng": 85.1212843197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "HELLO RESTAURANT & CAFE ( POCKET FRIENDLY CAFE ) EAST BORING CANAL ROAD BESIDES OF CHHAPPAN BHOG SWEETS",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2300"
+          },
+          "open": {
+            "day": 0,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2300"
+          },
+          "open": {
+            "day": 1,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2300"
+          },
+          "open": {
+            "day": 2,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2300"
+          },
+          "open": {
+            "day": 3,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2300"
+          },
+          "open": {
+            "day": 4,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2300"
+          },
+          "open": {
+            "day": 5,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2300"
+          },
+          "open": {
+            "day": 6,
+            "time": "1100"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 11:00 AM – 11:00 PM",
+        "Tuesday: 11:00 AM – 11:00 PM",
+        "Wednesday: 11:00 AM – 11:00 PM",
+        "Thursday: 11:00 AM – 11:00 PM",
+        "Friday: 11:00 AM – 11:00 PM",
+        "Saturday: 11:00 AM – 11:00 PM",
+        "Sunday: 11:00 AM – 11:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 573,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/107386543354642979540\">HELLO RESTAURANT &amp; CAFE ( POCKET FRIENDLY CAFE ) EAST BORING CANAL ROAD BESIDES OF CHHAPPAN BHOG SWEETS</a>"
+        ],
+        "photo_reference": "AaVGc3l8Hxh5p0YWuxdFJ6YEKvNRMZOLDNL_v_qiHCm0FtpR2htHzNnlXfxSjWuoYwZBLqU0FWoTbg1wp9iEpBPdT2guOChm-FSsEL3CpY12ltrHjqUJo_ozOsfkamR2GDnsr2KjeGOF-0h7vwAFJ4NlBml0NECx-PMwixlLqgm0kZhBGndM3CeCPGQF_ns7IzQA87UkVzN9NTwiBERXKbYRfN89ooqV9P4qZQ-t-CO9sY8d-N9i0WJSPxyO1M4anw0SxFaka79jFSZnvED8J3h8icxkkQPiaiX_e_xo837VKno6hIAnsOkApZ-90b__7NQ-7Rt3zQN75kOKiZlE_xXJt8Gkm5MNg0LLR7nySmBxDISVmrSz6RPPqNm3hxHljo9jbhJKqX3RV3zRI0RfNC4mePun8bKaOZtN8Cq3OCHIviL6a0w",
+        "width": 1280
+      }
+    ],
+    "place_id": "ChIJTQAloQhZ7TkR1Av6-ab8Lxo",
+    "plus_code": {
+      "compound_code": "J49F+Q3 Patna, Bihar, India",
+      "global_code": "7MQ7J49F+Q3"
+    },
+    "price_level": 2,
+    "rating": 4.8,
+    "reference": "ChIJTQAloQhZ7TkR1Av6-ab8Lxo",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 4942,
+    "formatted_phone_number": "096319 67309"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "4th Floor, Maheswari Mansion, near Shalimar Sweets, Kankarbagh, Lohia Nagar, Patna, Bihar 800020, India",
+    "geometry": {
+      "location": {
+        "lat": 25.5995768,
+        "lng": 85.14776719999999
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6009303302915,
+          "lng": 85.1491890302915
+        },
+        "southwest": {
+          "lat": 25.5982323697085,
+          "lng": 85.14649106970849
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Town Hall 29",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2300"
+          },
+          "open": {
+            "day": 0,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2300"
+          },
+          "open": {
+            "day": 1,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2300"
+          },
+          "open": {
+            "day": 2,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2300"
+          },
+          "open": {
+            "day": 3,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2300"
+          },
+          "open": {
+            "day": 4,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2300"
+          },
+          "open": {
+            "day": 5,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2300"
+          },
+          "open": {
+            "day": 6,
+            "time": "1100"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 11:00 AM – 11:00 PM",
+        "Tuesday: 11:00 AM – 11:00 PM",
+        "Wednesday: 11:00 AM – 11:00 PM",
+        "Thursday: 11:00 AM – 11:00 PM",
+        "Friday: 11:00 AM – 11:00 PM",
+        "Saturday: 11:00 AM – 11:00 PM",
+        "Sunday: 11:00 AM – 11:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 453,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116751841722788181582\">Town Hall 29</a>"
+        ],
+        "photo_reference": "AaVGc3lkWfWmFkEwNvU-vGZ8QnJapKNPe6Zgd9SmQHyzQoSVMm7fCj8IWkWN3nce7u0a4IOxpelIbOx1IoZLHqJpzlXf0okffJCbCVw_CuKxGHUi_bq8u1ma7bx3d3YoDGTEOG0ZcV3Ht_L6i76piJIfnUkCwyJXmx7MJmX_YzQsurLKt8i4_Xr7feybfEuYNNwMup6mEuQ8m74gwTJIaiMgiNWqcekob10zS9Kj3E0CuI5L8bkfipPZiZ31LvSuMSrTcjjgD4r5sjnK5QgBPAxTMF4hl5fFjpzrAcZLqHsYOTTBNjulXe6jIvFWuykmOJ4CrF3HGVi-iQ4CMtXM8RHKLzq-aEnMKIo5eFzqacJuH8lKAJu5Oy2NbMusI0-qWR3-6owC09Qcc3fDwzfgyF2wyiZPG4CWd_IXW-yI4jTw4ppaiuq0",
+        "width": 680
+      }
+    ],
+    "place_id": "ChIJb5HiDiNZ7TkRiR_rikaHAZ8",
+    "plus_code": {
+      "compound_code": "H4XX+R4 Patna, Bihar, India",
+      "global_code": "7MQ7H4XX+R4"
+    },
+    "rating": 4.7,
+    "reference": "ChIJb5HiDiNZ7TkRiR_rikaHAZ8",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 1762,
+    "formatted_phone_number": "091539 92877"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "On 3rd Floor, City centre mall, inside Food Court, Christian Colony, Lodipur, Patna, Bihar 800001, India",
+    "geometry": {
+      "location": {
+        "lat": 25.6176795,
+        "lng": 85.1355707
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6190176302915,
+          "lng": 85.1369583302915
+        },
+        "southwest": {
+          "lat": 25.6163196697085,
+          "lng": 85.1342603697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Indian Tadka",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2200"
+          },
+          "open": {
+            "day": 0,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2200"
+          },
+          "open": {
+            "day": 1,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2200"
+          },
+          "open": {
+            "day": 2,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2200"
+          },
+          "open": {
+            "day": 3,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2200"
+          },
+          "open": {
+            "day": 4,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2200"
+          },
+          "open": {
+            "day": 5,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2200"
+          },
+          "open": {
+            "day": 6,
+            "time": "1100"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 11:00 AM – 10:00 PM",
+        "Tuesday: 11:00 AM – 10:00 PM",
+        "Wednesday: 11:00 AM – 10:00 PM",
+        "Thursday: 11:00 AM – 10:00 PM",
+        "Friday: 11:00 AM – 10:00 PM",
+        "Saturday: 11:00 AM – 10:00 PM",
+        "Sunday: 11:00 AM – 10:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 720,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/118324229970428437940\">Indian Tadka</a>"
+        ],
+        "photo_reference": "AaVGc3l2TwCBl-fWyot3USzMxepuetPqx2NmY83EkY-Ypf5UmBrsfbHhoAw1HrwpTkjcniIje1mpxLZb2tk0kK1YyvZQUmm3Fa3HtovW90TWWC4-t0futx8zGpsTBjnLAQI9U_-vVHwcSA3rz-wR_bBsKkS3WKyqxi90NZwKmy68lzaMCfGoywd0eqIxt3xLSgiJ0Y_LCsQqk5p3SVyMlfgco1-cGuyuw9zhB8DzLdT1aK_BV944n2MuRO2VeWs5olS9PahhhQgJ7Np9zs-XJrdy3hP5jM6vKEPS5xeqtMPy5301Q8zUjrtlO__-5GoRz2qGKiIJ59gHM-EB3Y1SxgvhiCiKa1JgWx3Y9z9OIyQY_aZt4-XbjS7z4k6OoxlI4UbJ1XDgVYuAGFFaqYrz4EMfolUxmv-iyW8-rwuyvJ_cmO41DW6fYuFWUa20cg0FQ5cu",
+        "width": 1280
+      }
+    ],
+    "place_id": "ChIJdRoNSwFZ7TkRxgDxtaWff8U",
+    "plus_code": {
+      "compound_code": "J49P+36 Patna, Bihar, India",
+      "global_code": "7MQ7J49P+36"
+    },
+    "rating": 4.7,
+    "reference": "ChIJdRoNSwFZ7TkRxgDxtaWff8U",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 1187,
+    "formatted_phone_number": "079051 52075"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "Ashiana - Digha Road, more, opposite Pizza Hut, Engineer's Colony, Ram Nagari, Rukanpura, Patna, Bihar 800025, India",
+    "geometry": {
+      "location": {
+        "lat": 25.6155222,
+        "lng": 85.08208929999999
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6169549302915,
+          "lng": 85.08349398029151
+        },
+        "southwest": {
+          "lat": 25.61425696970849,
+          "lng": 85.0807960197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "JUNGLE SAFARI",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2200"
+          },
+          "open": {
+            "day": 0,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2200"
+          },
+          "open": {
+            "day": 1,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2200"
+          },
+          "open": {
+            "day": 2,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2200"
+          },
+          "open": {
+            "day": 3,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2200"
+          },
+          "open": {
+            "day": 4,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2200"
+          },
+          "open": {
+            "day": 5,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2200"
+          },
+          "open": {
+            "day": 6,
+            "time": "1100"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 11:00 AM – 10:00 PM",
+        "Tuesday: 11:00 AM – 10:00 PM",
+        "Wednesday: 11:00 AM – 10:00 PM",
+        "Thursday: 11:00 AM – 10:00 PM",
+        "Friday: 11:00 AM – 10:00 PM",
+        "Saturday: 11:00 AM – 10:00 PM",
+        "Sunday: 11:00 AM – 10:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3000,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/103456243276369668489\">JUNGLE SAFARI</a>"
+        ],
+        "photo_reference": "AaVGc3ndAraBMC5SKBj9HPe_eJrT7iTgjllrtje6I7iO1grPZW-lTpiM398CdF2R_mUXbP2Qls7mS568J7lE0LtTBqZqdoUdPP1gB9OyQskAAajIjO1sZy5IbVu0rLyBcvoCcxh4fYpZEDGmAwDKGex4nbj6cUMxv4XOCbwTSoXSlWLNwd-I0afIpvW2MFWDKe74wXiVfMMv5C1hpkt3mQAK7ecJG5v3qfm-o497HGNPT96RtinJXKzqI1YMi7n9HtEc-DGFqrsDB-6JADrnfce0SnE28RWJitFDku1AbjIAdsdaXfyhAIOMmO9FyaZBLxCVCf9Yh63APlnnnNTofZvrsBJo1FrfRXA75UCAvM7_qMRFPoCqGK83W2LbyPtX_bdKapNxefqxY8PfL-aPKl9fvxyhOhN7bj6z3k0nXyVqzd8_dfFU",
+        "width": 4000
+      }
+    ],
+    "place_id": "ChIJIbcqsINX7TkRwBUS_iJ4Wu4",
+    "plus_code": {
+      "compound_code": "J38J+6R Patna, Bihar, India",
+      "global_code": "7MQ7J38J+6R"
+    },
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "ChIJIbcqsINX7TkRwBUS_iJ4Wu4",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 2552,
+    "formatted_phone_number": "070045 43556"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "SP Verma Rd, Old Jakkanpur, Lodipur, Patna, Bihar 800001, India",
+    "geometry": {
+      "location": {
+        "lat": 25.6119797,
+        "lng": 85.14081259999999
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6133486802915,
+          "lng": 85.1421034802915
+        },
+        "southwest": {
+          "lat": 25.6106507197085,
+          "lng": 85.13940551970849
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Pista House, Patna",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2330"
+          },
+          "open": {
+            "day": 0,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2330"
+          },
+          "open": {
+            "day": 1,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2330"
+          },
+          "open": {
+            "day": 2,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2330"
+          },
+          "open": {
+            "day": 3,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2330"
+          },
+          "open": {
+            "day": 4,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2330"
+          },
+          "open": {
+            "day": 5,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2330"
+          },
+          "open": {
+            "day": 6,
+            "time": "1000"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 10:00 AM – 11:30 PM",
+        "Tuesday: 10:00 AM – 11:30 PM",
+        "Wednesday: 10:00 AM – 11:30 PM",
+        "Thursday: 10:00 AM – 11:30 PM",
+        "Friday: 10:00 AM – 11:30 PM",
+        "Saturday: 10:00 AM – 11:30 PM",
+        "Sunday: 10:00 AM – 11:30 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3060,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/105321083470657824902\">Pista House, Patna</a>"
+        ],
+        "photo_reference": "AaVGc3kVe--WuaJkMOVOjWsez3MiQKxZXnkv_CbiUh2BCSJ_tzikjqHNtMBW_i5NYTj-7_f567d-9HkyForaiLJTnjGFFVJ6mYWCNhquFIwKnFp0ftWlCNCRqqLxpS_eqsIAfiVoItfpkPiA8eAJVOYeJUn_JKgeVqnsuD0SC_f3JALx-iRzU-wW8x_xyNR3MjeKp92SzjZpEarwFrn7t-6NHpTyZPEO1oAbKCcT0BpLv7mjBBRtzxbyIASIPGxaG78uAr6-14dc5AVkyzJ1bnaFpCIDnm8svJ8Avz1L5RRkWxA7zxobBdPdpS13p436M89YCDlIK8siie_rpUcDZB_tW--QOFiKImFZU-5qgIJbJr2Fzs7Y17F_HhDhesEU4UB_AiL9h12-pSdxKre1YnpwP8wCBhSSB5ALh_CcB4j7Ks35NmpP1PPH_azL5w6pFA",
+        "width": 4080
+      }
+    ],
+    "place_id": "ChIJg487mbhZ7TkR32uBRkTgh9o",
+    "plus_code": {
+      "compound_code": "J46R+Q8 Patna, Bihar, India",
+      "global_code": "7MQ7J46R+Q8"
+    },
+    "price_level": 2,
+    "rating": 4.5,
+    "reference": "ChIJg487mbhZ7TkR32uBRkTgh9o",
+    "types": ["bakery", "establishment", "food", "point_of_interest", "restaurant", "store"],
+    "user_ratings_total": 7496,
+    "formatted_phone_number": "095700 03101"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "7th Floor, J45P+FFR Nutan Plaza, Sri Niwas Path, off Fraser Road, opposite Santosha Complex, Bander Bagicha, Fraser Road Area, Patna, Bihar 800001, India",
+    "geometry": {
+      "location": {
+        "lat": 25.6086174,
+        "lng": 85.1360342
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 25.6099796802915,
+          "lng": 85.1373224802915
+        },
+        "southwest": {
+          "lat": 25.6072817197085,
+          "lng": 85.13462451970848
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Aasman Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2300"
+          },
+          "open": {
+            "day": 0,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2300"
+          },
+          "open": {
+            "day": 1,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2300"
+          },
+          "open": {
+            "day": 2,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2300"
+          },
+          "open": {
+            "day": 3,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2300"
+          },
+          "open": {
+            "day": 4,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2300"
+          },
+          "open": {
+            "day": 5,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2300"
+          },
+          "open": {
+            "day": 6,
+            "time": "1100"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 11:00 AM – 11:00 PM",
+        "Tuesday: 11:00 AM – 11:00 PM",
+        "Wednesday: 11:00 AM – 11:00 PM",
+        "Thursday: 11:00 AM – 11:00 PM",
+        "Friday: 11:00 AM – 11:00 PM",
+        "Saturday: 11:00 AM – 11:00 PM",
+        "Sunday: 11:00 AM – 11:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3200,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116724846725648403024\">Aasman Restaurant</a>"
+        ],
+        "photo_reference": "AaVGc3m8Kv51G3g9P_x67K_PwOynzsBmVbSlnezuLGtxT41-D_q1H4CwiqfizfMDNQJzUCg8VmwM8GxX76we7ystrfriPRSXpEHC7wxGR1HMhBRHJ_DFhI8FMaHX1pLco12e5urNVwJ8wkAtRFhHyH9znLraAQs8Jv0Ki6K233xEZx0wvmB7G3g6G-cUpUUBIiK55Zas6S9ShUnsPTTf88Kyv8GKg1x6Zc1l6l8YHaNIml084cNePoO45vQN3wZIp5GUV6aerblYTC6QcYki6acaEikkj8iMwFrLmGpt3Aco9D8C717ILTjYS2Q7scBZl-YmZLfkXk1-5gQU5uH_NcaNYYTkWYc4Iw1G1YG_vfYyBUpehcK4YgALFV_CzbyFiVyqguO9tYMlPRPaiLTUWpGZUj0x1ola1QrgxJGBPc7b3cYNP9hs",
+        "width": 4800
+      }
+    ],
+    "place_id": "ChIJq7zt4UJY7TkRhr21J74gdUE",
+    "price_level": 3,
+    "rating": 4.1,
+    "reference": "ChIJq7zt4UJY7TkRhr21J74gdUE",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 7116,
+    "formatted_phone_number": "072800 40098"
+  }
+]

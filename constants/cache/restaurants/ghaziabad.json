@@ -1,0 +1,1301 @@
+[
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "The Walk, C-69, opposite petrol pump, RDC, Sector 15, Sector 10, Raj Nagar, Ghaziabad, Uttar Pradesh 201002, India",
+    "geometry": {
+      "location": {
+        "lat": 28.6767242,
+        "lng": 77.44301879999999
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.6781098302915,
+          "lng": 77.4444326302915
+        },
+        "southwest": {
+          "lat": 28.6754118697085,
+          "lng": 77.44173466970848
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "The Walk",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 1,
+            "time": "0000"
+          },
+          "open": {
+            "day": 0,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "0000"
+          },
+          "open": {
+            "day": 1,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "0000"
+          },
+          "open": {
+            "day": 2,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "0000"
+          },
+          "open": {
+            "day": 3,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "0000"
+          },
+          "open": {
+            "day": 4,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "0000"
+          },
+          "open": {
+            "day": 5,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 0,
+            "time": "0000"
+          },
+          "open": {
+            "day": 6,
+            "time": "1100"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 11:00 AM – 12:00 AM",
+        "Tuesday: 11:00 AM – 12:00 AM",
+        "Wednesday: 11:00 AM – 12:00 AM",
+        "Thursday: 11:00 AM – 12:00 AM",
+        "Friday: 11:00 AM – 12:00 AM",
+        "Saturday: 11:00 AM – 12:00 AM",
+        "Sunday: 11:00 AM – 12:00 AM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 834,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/109083089419447100652\">The Walk</a>"
+        ],
+        "photo_reference": "AaVGc3ki8UXvkyVWkbPo9R1dN3pxVMEa4W2g_4UQSz2zIsw4Bj14LuYOrfyu3Il7ZWE3t1f9d8kHG7UszkbifxyNmIfDluijs9bqz-Y_zF0l0DI9MGy9dev7k7-gVBSPh2aBdwJk1kCWq-UCCQX7hfeMMfMLoAxpS_NdMvF9nyQJmLwRCH6dVukn0MpGh8tJ5OHQqYoDxzpF74lfCFH3T8tyeENeXjLmCvxg5ovOL-BnuONdY6gCMEUaeU3smPiuycY9HalvXr6ihAwsW7321W3wx3gCyn4Rb_YSrDu-GehfSgT4PCXI3tZot0Ru6EUUsYfgtRyWYBv9EJENQQD-F7OO7YjxD6_TYXlcWBKC7Bp9qozn7yjo9qclamvbHQ8sFcgmruKI1KrdebtwgdZdCnAtKmFxRlM9DM6JBKF8QXQqOv_XUbM",
+        "width": 1200
+      }
+    ],
+    "place_id": "ChIJS4slJS3xDDkRnSVpfOiCi4s",
+    "plus_code": {
+      "compound_code": "MCGV+M6 Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVMCGV+M6"
+    },
+    "rating": 4.5,
+    "reference": "ChIJS4slJS3xDDkRnSVpfOiCi4s",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 3078,
+    "formatted_phone_number": "095990 69519"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "C-91, RDC, Sector 15, Sector 10, Raj Nagar, Ghaziabad, Uttar Pradesh 201002, India",
+    "geometry": {
+      "location": {
+        "lat": 28.677085,
+        "lng": 77.4435331
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.6784869802915,
+          "lng": 77.44492463029151
+        },
+        "southwest": {
+          "lat": 28.6757890197085,
+          "lng": 77.4422266697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "The Clock Tower",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2300"
+          },
+          "open": {
+            "day": 0,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2300"
+          },
+          "open": {
+            "day": 1,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2300"
+          },
+          "open": {
+            "day": 2,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2300"
+          },
+          "open": {
+            "day": 3,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2300"
+          },
+          "open": {
+            "day": 4,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2300"
+          },
+          "open": {
+            "day": 5,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2300"
+          },
+          "open": {
+            "day": 6,
+            "time": "1100"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 11:00 AM – 11:00 PM",
+        "Tuesday: 11:00 AM – 11:00 PM",
+        "Wednesday: 11:00 AM – 11:00 PM",
+        "Thursday: 11:00 AM – 11:00 PM",
+        "Friday: 11:00 AM – 11:00 PM",
+        "Saturday: 11:00 AM – 11:00 PM",
+        "Sunday: 11:00 AM – 11:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 809,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/106464361274852901418\">The Clock Tower</a>"
+        ],
+        "photo_reference": "AaVGc3lPbhJ_vB5cH1UZjQrRSR_R-LRAzKegcnOwrwvNOdo1uX19M0qMfE3h6L2giSVPS-w1U3EJKtYEw5S0h3ZolEs5UumC2-oMvTpw-1XG4dqXV7O_P0zypBYPidaRQKWwmzP9uudQYAUwUFKTa0rUVZOM1QiJ3R9sJ6LvTVBJSrlN67VQ52GWiNsJ_gOZ55IW4pbnjf01mdwB3JYdF_89LG3jrJZ0yXB4FxL5s-dCwl6uCxm5-h14qUFLEXPSyepIjhXVtPFwCmx1PKmTnoBWlNm5n9TFWLDmil8JZYwWlD6NofDDYnQwbRs2t1OVBbeZmLhXTqyfp4gCApRHBQyuqAqJpUeChmB4jdfru1CJ1JlvlO55Q1SiRcPi_Wh9ywV97EQBd3B9m-nb2IXf7ANQfWbExMlcODPfmqk8hZl8tFkbAg",
+        "width": 1440
+      }
+    ],
+    "place_id": "ChIJF-ORxWLxDDkRG5u3IUCogUg",
+    "plus_code": {
+      "compound_code": "MCGV+RC Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVMCGV+RC"
+    },
+    "rating": 4.5,
+    "reference": "ChIJF-ORxWLxDDkRG5u3IUCogUg",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 1411,
+    "formatted_phone_number": "097173 12122"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "3rd Floor, Niti Khand 3, Shakti Khand 2, Indirapuram, Ghaziabad, Uttar Pradesh 201014, India",
+    "geometry": {
+      "location": {
+        "lat": 28.6458127,
+        "lng": 77.3749327
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.64704123029151,
+          "lng": 77.3762677302915
+        },
+        "southwest": {
+          "lat": 28.6443432697085,
+          "lng": 77.3735697697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Noon Mirch | Rooftop Restaurant & Premium Fine Dine",
+    "opening_hours": {
+      "open_now": true,
+      "periods": [
+        {
+          "close": {
+            "day": 1,
+            "time": "0230"
+          },
+          "open": {
+            "day": 0,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "0230"
+          },
+          "open": {
+            "day": 1,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "0230"
+          },
+          "open": {
+            "day": 2,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "0230"
+          },
+          "open": {
+            "day": 3,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "0230"
+          },
+          "open": {
+            "day": 4,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "0230"
+          },
+          "open": {
+            "day": 5,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 0,
+            "time": "0230"
+          },
+          "open": {
+            "day": 6,
+            "time": "1200"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 12:00 PM – 2:30 AM",
+        "Tuesday: 12:00 PM – 2:30 AM",
+        "Wednesday: 12:00 PM – 2:30 AM",
+        "Thursday: 12:00 PM – 2:30 AM",
+        "Friday: 12:00 PM – 2:30 AM",
+        "Saturday: 12:00 PM – 2:30 AM",
+        "Sunday: 12:00 PM – 2:30 AM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 750,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/109758357243838949210\">Noon Mirch | Rooftop Restaurant &amp; Premium Fine Dine</a>"
+        ],
+        "photo_reference": "AaVGc3kkL6WLgeCjPZOYSfQ-x98uhMb1ibhCT-XkULwmeWJ-dK8LNu9Kuky0ANXw91CHkAV9snF6y3ajK1hO-1oRq-AXb_Q0WJGcMyBeJ30r0FQbOjSCxPYMhQpGmQq3RHnpliSVQrNCyA3zvKVWkldGNz5VkIoUN816EUFrEAFdQ3r2H_-mcOXtXKpWExf-WACZY4J_KsMdCddGfeK4hZztESip7UGcXcU4KYkhRnVz1EeOgQAJ-OGDSDzz-mIzUxyf8-EEMEBleH0L-c1jE6QqEJx9Q_wRNwsODnrJ9mjXCP3vpXA_sFj49lv_WZYr7YBEI1vGsLIoS3ET4Bd_cnOnwl2lR5OUpqs1q4IZFX9-bCXbkfi3257TG4GDBiI1bGVT3iYx0oyoVT4PZOKwZRn8cSJNlWfs_7hfXzMO4RMXErTyj21n",
+        "width": 1124
+      }
+    ],
+    "place_id": "ChIJaYoRgFX7DDkRuzOwGZnolAw",
+    "plus_code": {
+      "compound_code": "J9WF+8X Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVJ9WF+8X"
+    },
+    "rating": 4.2,
+    "reference": "ChIJaYoRgFX7DDkRuzOwGZnolAw",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 1202,
+    "formatted_phone_number": "098113 81617"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "Habitat Centre, Indirapuram Habitat Centre, A-C, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh 201014, India",
+    "geometry": {
+      "location": {
+        "lat": 28.6402307,
+        "lng": 77.3686902
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.6411547802915,
+          "lng": 77.3702471802915
+        },
+        "southwest": {
+          "lat": 28.6384568197085,
+          "lng": 77.3675492197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "The Flying Dutchman",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 1,
+            "time": "0000"
+          },
+          "open": {
+            "day": 0,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "0000"
+          },
+          "open": {
+            "day": 1,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "0000"
+          },
+          "open": {
+            "day": 2,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "0000"
+          },
+          "open": {
+            "day": 3,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "0000"
+          },
+          "open": {
+            "day": 4,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "0000"
+          },
+          "open": {
+            "day": 5,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 0,
+            "time": "0000"
+          },
+          "open": {
+            "day": 6,
+            "time": "1200"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 12:00 PM – 12:00 AM",
+        "Tuesday: 12:00 PM – 12:00 AM",
+        "Wednesday: 12:00 PM – 12:00 AM",
+        "Thursday: 12:00 PM – 12:00 AM",
+        "Friday: 12:00 PM – 12:00 AM",
+        "Saturday: 12:00 PM – 12:00 AM",
+        "Sunday: 12:00 PM – 12:00 AM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3200,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116379405806606414832\">The Flying Dutchman</a>"
+        ],
+        "photo_reference": "AaVGc3kIjVHBbTlBA-2F14Q31sdcqFJwxPm6QH37vmvCorujhLZULGZ19NAvp-cXgT2sNJTHB89lxK-kM4tcxsBEgwbGIhJkCy5LzjX_a7TTRjKvUkHFR_J40dKGu298jKvhVDwjA0VgPa4vdJqoC_63mz-i1j4gv3b3byRpcqo2lpQDgnTPg-hsSUL6wCOwHVXDTHf6m1y1qfJMJvvSdBZneFoaWiFUt9uvxpZUTKDx4F6QAqsLvkNvT3YzEb0BvCN3YFvtNNqzEHgbHI-GYUTJeI1vbhBB0BAz8st5hqMoeVYX4rMco9AOLkrYxKZMmCHd4YvntXMTDYYNn04CjgHvdmetSvNL6pjJITZvZuvxe4eA2AZfCJTPu4lSbBbu8agLY99FuC-Hr4N5bPkjwBwNOxFHFbusf7ydaSLZbuEKperK4Q",
+        "width": 4800
+      }
+    ],
+    "place_id": "ChIJc0mKW7b7DDkRKFwCXiXQtEw",
+    "plus_code": {
+      "compound_code": "J9R9+3F Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVJ9R9+3F"
+    },
+    "price_level": 3,
+    "rating": 4.3,
+    "reference": "ChIJc0mKW7b7DDkRKFwCXiXQtEw",
+    "types": [
+      "bar",
+      "cafe",
+      "establishment",
+      "food",
+      "night_club",
+      "point_of_interest",
+      "restaurant"
+    ],
+    "user_ratings_total": 3347,
+    "formatted_phone_number": "085277 10016"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "Radisson Blu Towers Kaushambi Delhi NCR, CK II, Sector 14, Kaushambi, Ghaziabad, Uttar Pradesh 201010, India",
+    "geometry": {
+      "location": {
+        "lat": 28.6392411,
+        "lng": 77.3265916
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.6406705302915,
+          "lng": 77.32794243029151
+        },
+        "southwest": {
+          "lat": 28.6379725697085,
+          "lng": 77.3252444697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "ROOFTOP - The View",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2330"
+          },
+          "open": {
+            "day": 0,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2330"
+          },
+          "open": {
+            "day": 1,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2330"
+          },
+          "open": {
+            "day": 2,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2330"
+          },
+          "open": {
+            "day": 3,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2330"
+          },
+          "open": {
+            "day": 4,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2330"
+          },
+          "open": {
+            "day": 5,
+            "time": "0700"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2330"
+          },
+          "open": {
+            "day": 6,
+            "time": "0700"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 7:00 AM – 11:30 PM",
+        "Tuesday: 7:00 AM – 11:30 PM",
+        "Wednesday: 7:00 AM – 11:30 PM",
+        "Thursday: 7:00 AM – 11:30 PM",
+        "Friday: 7:00 AM – 11:30 PM",
+        "Saturday: 7:00 AM – 11:30 PM",
+        "Sunday: 7:00 AM – 11:30 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3200,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/111233867177113290693\">ROOFTOP - The View</a>"
+        ],
+        "photo_reference": "AaVGc3n1WHTADaUS2rJ50gE0RCf5yHaaJbpuOt_aBISaKp9RLd8jmPitcLESz6MnQSlSoMgcOWsq7Hz1KmpOPnRdg-KCwInb8g-lEWQGu0i1aec4OGS58S1CiaRf8cKMVjtmfWJjKMjwEpz37t1NDb1zy9bdm79ohMyCOCFByE0Y8mSqAENY3uYKbwK_uWuKc9D3AEU3nstrinBmTkqGc5xt_nvr7WQb7e1MnYjJOkx1F9D9Bf0bAkgYw5Oa1AfC5qQFlYcYXKbELzE_oCpUHXzzGgU3r-c4RJlUssDF0MnRGG9kO0uScnNjCD3g9wjZzff8WATXkMc-2_4blGZJvYuLyC8m3OprtfWBq-gwyqCGB_T-bO7d6l7oPPuCej9T4RgVD-zAjwt15s3eXZ5Lszg0Zo4C0c6CJa_AYKOL0KTGG9hg1O0",
+        "width": 4800
+      }
+    ],
+    "place_id": "ChIJKXGQRbD7DDkROOM8JGxTtAQ",
+    "plus_code": {
+      "compound_code": "J8QG+MJ Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVJ8QG+MJ"
+    },
+    "rating": 4.8,
+    "reference": "ChIJKXGQRbD7DDkROOM8JGxTtAQ",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 3193,
+    "formatted_phone_number": "089298 54243"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "3rd and 4th floor, B-15, RDC, Sector 15, Sector 10, Raj Nagar, Ghaziabad, Uttar Pradesh 201002, India",
+    "geometry": {
+      "location": {
+        "lat": 28.6740175,
+        "lng": 77.4437816
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.6752758802915,
+          "lng": 77.44490863029151
+        },
+        "southwest": {
+          "lat": 28.67257791970851,
+          "lng": 77.4422106697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "LaBash- Dine-in Restaurant,Terrace, Restro & Lounge , Party Place",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 1,
+            "time": "0000"
+          },
+          "open": {
+            "day": 0,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "0000"
+          },
+          "open": {
+            "day": 1,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "0000"
+          },
+          "open": {
+            "day": 2,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "0000"
+          },
+          "open": {
+            "day": 3,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "0000"
+          },
+          "open": {
+            "day": 4,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "0000"
+          },
+          "open": {
+            "day": 5,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 0,
+            "time": "0000"
+          },
+          "open": {
+            "day": 6,
+            "time": "1200"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 12:00 PM – 12:00 AM",
+        "Tuesday: 12:00 PM – 12:00 AM",
+        "Wednesday: 12:00 PM – 12:00 AM",
+        "Thursday: 12:00 PM – 12:00 AM",
+        "Friday: 12:00 PM – 12:00 AM",
+        "Saturday: 12:00 PM – 12:00 AM",
+        "Sunday: 12:00 PM – 12:00 AM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3452,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/109794636634506874074\">LaBash- Dine-in Restaurant,Terrace, Restro &amp; Lounge , Party Place</a>"
+        ],
+        "photo_reference": "AaVGc3nIw4xysDS4WPQep5aitQMR36XD-UYss_rjIof8kDmfK8dcJxLk195VyWwvFguJYYpDWYQeIbmTrLlMXLaPgLPouqOdcbA3H8YY7qpY7jycawYb-KsBDsZBJqiz7VupQbAxRQl5x-8Tk4oMqWxZj5_jwGcGnDXJ47-Myyd7vLghv7l8CGkPOgEBLE3-kG_FIPbpGxqd75sYdRPPrT0iMCRZSxsblhrqNQRkpc9S6D-SIzUsLZXDeF4FQNOiPrOYM3BQ9sssnIvcrniTJc47HErcz7bKeDdaKwamh99UXFO55UfFqjbDT1xIlPvf_fvzqgmQW4eiPqJCPZK438bCVMaOkOK2wmBJYMGjatu8Fhz90A7lZlzdM_SHZpX4ae7WP-X64ZQdpJE3CHGQ7tyL61mmXLju1SuxHcMTeNG8EIoIgGPWB37tWY7KvXWMDEU-",
+        "width": 4800
+      }
+    ],
+    "place_id": "ChIJPbapDLzxDDkRzQWRXqJJTPo",
+    "plus_code": {
+      "compound_code": "MCFV+JG Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVMCFV+JG"
+    },
+    "rating": 4.5,
+    "reference": "ChIJPbapDLzxDDkRzQWRXqJJTPo",
+    "types": [
+      "bar",
+      "establishment",
+      "food",
+      "home_goods_store",
+      "night_club",
+      "point_of_interest",
+      "restaurant",
+      "store"
+    ],
+    "user_ratings_total": 601,
+    "formatted_phone_number": "076785 11717"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "Gaur Gravity Plaza, 13 & 14, Sector 4, Vaishali, Ghaziabad, Uttar Pradesh 201019, India",
+    "geometry": {
+      "location": {
+        "lat": 28.6464821,
+        "lng": 77.3399362
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.6477771802915,
+          "lng": 77.34130448029151
+        },
+        "southwest": {
+          "lat": 28.6450792197085,
+          "lng": 77.33860651970849
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Walk In The Woods",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2300"
+          },
+          "open": {
+            "day": 0,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2300"
+          },
+          "open": {
+            "day": 1,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2300"
+          },
+          "open": {
+            "day": 2,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2300"
+          },
+          "open": {
+            "day": 3,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2300"
+          },
+          "open": {
+            "day": 4,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2300"
+          },
+          "open": {
+            "day": 5,
+            "time": "1200"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2300"
+          },
+          "open": {
+            "day": 6,
+            "time": "1200"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 12:00 – 11:00 PM",
+        "Tuesday: 12:00 – 11:00 PM",
+        "Wednesday: 12:00 – 11:00 PM",
+        "Thursday: 12:00 – 11:00 PM",
+        "Friday: 12:00 – 11:00 PM",
+        "Saturday: 12:00 – 11:00 PM",
+        "Sunday: 12:00 – 11:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3600,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/102080832309347086327\">Walk In The Woods</a>"
+        ],
+        "photo_reference": "AaVGc3kz5rc0tT0s7-yv3clKUvgF9CYdlPzddqS81yg_HVOi-yl_SrnfUA6JQS4UgO8mTfBx2sxlWkcP7IWZJIRer_LFPSvcd7jCBs_gx7Y5lCso06lNQnBYCg841vA0uTjFaC_XyT8-iHvtkEIIgjk3M6OjlFNq080nhUMksgQ2NaPXKpfc9I5o_OL3Cmlr0z8v5nioxaEQve1FELanmEHoFUTly3H1eSPEKhL6wpSZ9qG6sDvqg1S2Ds5tHtSvNCGUFELz7zudIBv1mHnjqYS1MR3dZHAqoiJP2qw5hpqzmLQICczYpcSxwijOlX2K3smaL49q41wk3Q4d5O9HpP3B868Vu51L29qiR4jH-j_-799wgzDudFdvqavQIxci1j9aZqr2yh0BQjCmmvLF0wLaT8oxyPopMqX-3tPvYiiOaIYrxgyp",
+        "width": 4800
+      }
+    ],
+    "place_id": "ChIJ896Qn9D6DDkRNCBw2S0G-BU",
+    "plus_code": {
+      "compound_code": "J8WQ+HX Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVJ8WQ+HX"
+    },
+    "price_level": 3,
+    "rating": 4.2,
+    "reference": "ChIJ896Qn9D6DDkRNCBw2S0G-BU",
+    "types": ["establishment", "food", "meal_delivery", "point_of_interest", "restaurant"],
+    "user_ratings_total": 5087,
+    "formatted_phone_number": "095559 00022"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "C -86, RDC, Sector 15, RDC, Raj Nagar, Ghaziabad, Uttar Pradesh 201002, India",
+    "geometry": {
+      "location": {
+        "lat": 28.6770002,
+        "lng": 77.4429236
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.6783022302915,
+          "lng": 77.4442810302915
+        },
+        "southwest": {
+          "lat": 28.6756042697085,
+          "lng": 77.44158306970849
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Krishnam restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2300"
+          },
+          "open": {
+            "day": 0,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2300"
+          },
+          "open": {
+            "day": 1,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2300"
+          },
+          "open": {
+            "day": 2,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2300"
+          },
+          "open": {
+            "day": 3,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2300"
+          },
+          "open": {
+            "day": 4,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2300"
+          },
+          "open": {
+            "day": 5,
+            "time": "1100"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2300"
+          },
+          "open": {
+            "day": 6,
+            "time": "1100"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 11:00 AM – 11:00 PM",
+        "Tuesday: 11:00 AM – 11:00 PM",
+        "Wednesday: 11:00 AM – 11:00 PM",
+        "Thursday: 11:00 AM – 11:00 PM",
+        "Friday: 11:00 AM – 11:00 PM",
+        "Saturday: 11:00 AM – 11:00 PM",
+        "Sunday: 11:00 AM – 11:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 852,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/105694850218118259499\">Krishnam restaurant</a>"
+        ],
+        "photo_reference": "AaVGc3la9uZrKh2qd4d6cvi3CccDUfKGSOy8kY7IeW5_S3-OZB88QtNoqrAlYyTThveUCRf2jw3YSXEOO0VlNmxOk14M3HrsS3qAxl32E5_Acozd_fXl5QXza0o8Q1dRpyTbNASLqkIS9NACcv6azXoMOIJkILwy33nOPyxj91ChBf8KOPyRogVf3s623EMaviJgMbZn069aZgIoehdGantkW3yz4J-dwuwEzlAEgZYv1wbLL-T6veKXA5V8_zR90jOTNgYwjHGAe-DvzXY5XIede5n2w7C7u4Z9y-Bd1Ua5O1SHkrolQ2AxPdv1FfpSrZHZRlHnb4Gqjr-aIXnF7GK1dmRe4EKs_l4NLTjmzazjDjES3ERdGra3SuFaNvf5aU2aiyO1oCrONgBgx4ZXegwuf7swLIUn1dcV6XuFJfKooVuw35KoUKgLjUBqJWUgbd_A",
+        "width": 1280
+      }
+    ],
+    "place_id": "ChIJK4ULAQDxDDkR1ZJynSmozKw",
+    "plus_code": {
+      "compound_code": "MCGV+R5 Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVMCGV+R5"
+    },
+    "rating": 4.7,
+    "reference": "ChIJK4ULAQDxDDkR1ZJynSmozKw",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 1301,
+    "formatted_phone_number": "092661 27555"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "Shop no.1&2, K-Block, Plot No.8, near State Bank of India, Vaibhav Khand, Indirapuram, Ghaziabad, Uttar Pradesh 201014, India",
+    "geometry": {
+      "location": {
+        "lat": 28.6336719,
+        "lng": 77.36705309999999
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.6350196302915,
+          "lng": 77.36843623029151
+        },
+        "southwest": {
+          "lat": 28.6323216697085,
+          "lng": 77.36573826970849
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Yanny's | Multi-cuisine Restaurant & Coffee House",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2330"
+          },
+          "open": {
+            "day": 0,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2330"
+          },
+          "open": {
+            "day": 1,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2330"
+          },
+          "open": {
+            "day": 2,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2330"
+          },
+          "open": {
+            "day": 3,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2330"
+          },
+          "open": {
+            "day": 4,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2330"
+          },
+          "open": {
+            "day": 5,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2330"
+          },
+          "open": {
+            "day": 6,
+            "time": "1230"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 12:30 – 11:30 PM",
+        "Tuesday: 12:30 – 11:30 PM",
+        "Wednesday: 12:30 – 11:30 PM",
+        "Thursday: 12:30 – 11:30 PM",
+        "Friday: 12:30 – 11:30 PM",
+        "Saturday: 12:30 – 11:30 PM",
+        "Sunday: 12:30 – 11:30 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3200,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116291543861805339160\">Yanny&#39;s | Multi-cuisine Restaurant &amp; Coffee House</a>"
+        ],
+        "photo_reference": "AaVGc3n8Ms1B5o_Vuj9sHTN3qhFMDxyyserMlp5ywh5uEc7xP1X0vnxN15_9vinc3TSmQcBftqhsLy657SHBvu1vtl1mmA5Sy8Zz6CT6tMs_jAKANr4NbymWr6ABCc2LGzM_V1AOX2tjqWm1S1pfKC8AVcOPoCn-Pi9gCqcftz1MYBrsrcevpgoF1OIlwk5gG7p_r3H5nQT-hZ4pPNVF-Z8MrbWzzRN3ynVolUpRehkC3t2n6M8ML3IMTysMvaMaPxJO974jz4LHncB_G6Pok415YVmqzLQsiVM_5qC-wJo_5-r87yTkTnv7N1c3e6NcH5qGlYmMVpN4t4DSFAcc3kPfEpMI9N3oLzUyeDun3RVxkr2PNoa4eUyfqL7lqgY17eZjqmLWp8a3ipxtumBmnbJIoARAM7gwA4-yu39D-G0soI2qdg",
+        "width": 4800
+      }
+    ],
+    "place_id": "ChIJK-9d0lDlDDkRBOvp0UTL6oM",
+    "plus_code": {
+      "compound_code": "J9M8+FR Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVJ9M8+FR"
+    },
+    "rating": 4.5,
+    "reference": "ChIJK-9d0lDlDDkRBOvp0UTL6oM",
+    "types": ["bar", "cafe", "establishment", "food", "point_of_interest", "restaurant", "store"],
+    "user_ratings_total": 671,
+    "formatted_phone_number": "093198 61421"
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "B 12, opposite Parivartan School, Block 10, Sector 10, Raj Nagar, Ghaziabad, Uttar Pradesh 201002, India",
+    "geometry": {
+      "location": {
+        "lat": 28.68222979999999,
+        "lng": 77.44568319999999
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 28.6836373802915,
+          "lng": 77.4470200302915
+        },
+        "southwest": {
+          "lat": 28.6809394197085,
+          "lng": 77.44432206970849
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "name": "Karashii Kitchen",
+    "opening_hours": {
+      "open_now": false,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "2300"
+          },
+          "open": {
+            "day": 0,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "2300"
+          },
+          "open": {
+            "day": 1,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "2300"
+          },
+          "open": {
+            "day": 2,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "2300"
+          },
+          "open": {
+            "day": 3,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "2300"
+          },
+          "open": {
+            "day": 4,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "2300"
+          },
+          "open": {
+            "day": 5,
+            "time": "1230"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "2300"
+          },
+          "open": {
+            "day": 6,
+            "time": "1230"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 12:30 – 11:00 PM",
+        "Tuesday: 12:30 – 11:00 PM",
+        "Wednesday: 12:30 – 11:00 PM",
+        "Thursday: 12:30 – 11:00 PM",
+        "Friday: 12:30 – 11:00 PM",
+        "Saturday: 12:30 – 11:00 PM",
+        "Sunday: 12:30 – 11:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 4800,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116197730979763389473\">Jaspreet Sandhu</a>"
+        ],
+        "photo_reference": "AaVGc3nkR6-133QcZBcC4n7gC00PBok82_O1H4r_58DYrt9TFegos2P3_dXuOpr1viEM6Gg5hnxQMR3QpRqxK0MrRdmQlVqYnbTcY0qdX4UQJOu2euZL3wy_AbSv38Ir8uiQbx4hIeLm6Cn3c4k9BUcEB-xtNTLP2PXgE2P4qdqAB4zpOEQTnHBHbovbwsm4j1JGhwdvgY4BGFk3BVQHt5o3RbqiJwNfck304gYHsMeBQ1Ej933ssFAktpRxgkTHMwO6Tm1SlLiDNjj9ih4YlcY7B_4RLEL03V3M1rozrkcVYcaO5O_KztMUp0uvwL9SPLVbQLD9QUBd8MjaIjGeQ_7tSAXwylbyfRuLVhHfOWjve5LJ5K0ghH6D7CVX8J34s_CGxDKGHPMc9DSGM3xeNIcpqQYQXRuTAF76b3eUrPvXjNTDgw",
+        "width": 3600
+      }
+    ],
+    "place_id": "ChIJIfZi5f7xDDkR24ds2EdNyxo",
+    "plus_code": {
+      "compound_code": "MCJW+V7 Ghaziabad, Uttar Pradesh, India",
+      "global_code": "7JWVMCJW+V7"
+    },
+    "rating": 4.8,
+    "reference": "ChIJIfZi5f7xDDkR24ds2EdNyxo",
+    "types": ["establishment", "food", "point_of_interest", "restaurant"],
+    "user_ratings_total": 375,
+    "formatted_phone_number": "081797 97965"
+  }
+]
