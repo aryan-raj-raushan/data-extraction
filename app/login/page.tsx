@@ -43,7 +43,7 @@ export default function LoginPage() {
     setLoading(false);
 
     if (res?.ok) {
-      router.push('/');
+      router.push('/finder');
     } else {
       setError('Incorrect username or password.');
     }
