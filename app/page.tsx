@@ -1,7 +1,9 @@
+// app/page.tsx
+
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { authOptions } from '@/lib/auth/auth';
-import RestaurantFinder from '@/components/restaurants/RestaurantFinder';
+import PlaceFinder from '@/components/places/PlaceFinder';
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -10,5 +12,5 @@ export default async function Home() {
     redirect('/login');
   }
 
-  return <RestaurantFinder />;
+  return <PlaceFinder />;
 }

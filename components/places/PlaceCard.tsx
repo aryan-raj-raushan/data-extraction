@@ -1,12 +1,22 @@
-// components/restaurants/RestaurantCard.tsx
-
+// components/places/PlaceCard.tsx
 'use client';
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, Phone, MapPin, ExternalLink, UtensilsCrossed, Copy, Check } from 'lucide-react';
+import {
+  Star,
+  Phone,
+  MapPin,
+  ExternalLink,
+  UtensilsCrossed,
+  GraduationCap,
+  Copy,
+  Check,
+  Loader2,
+} from 'lucide-react';
+import type { PlaceMode } from '@/lib/cache/placeCache';
 
-interface Restaurant {
+export interface Place {
   place_id: string;
   name: string;
   formatted_address?: string;
@@ -18,16 +28,15 @@ interface Restaurant {
 }
 
 interface Props {
-  restaurant: Restaurant;
+  place: Place;
   index: number;
+  area: string;
+  mode: PlaceMode;
+  /** Called after a successful phone extraction so the parent list can update */
+  onPhoneExtracted: (placeId: string, phone: string) => void;
 }
 
-const PRICE_LABELS: Record<number, string> = {
-  1: '₹',
-  2: '₹₹',
-  3: '₹₹₹',
-  4: '₹₹₹₹',
-};
+const PRICE_LABELS: Record<number, string> = { 1: '₹', 2: '₹₹', 3: '₹₹₹', 4: '₹₹₹₹' };
 
 const RANK_CONFIG = [
   {
@@ -55,6 +64,8 @@ const DEFAULT_RANK = {
   hash: 'text-[7px]',
   shadow: false,
 };
+
+// ── Phone row (copy) ──────────────────────────────────────────────────────────
 
 function PhoneRow({ number }: { number: string }) {
   const [copied, setCopied] = useState(false);
@@ -112,10 +123,86 @@ function PhoneRow({ number }: { number: string }) {
   );
 }
 
-export default function RestaurantCard({ restaurant, index }: Props) {
-  const mapsUrl = `https://www.google.com/maps/place/?q=place_id:${restaurant.place_id}`;
-  const isOpen = restaurant.opening_hours?.open_now;
+// ── Extract Number button ─────────────────────────────────────────────────────
+
+function ExtractButton({
+  placeId,
+  area,
+  mode,
+  onExtracted,
+}: {
+  placeId: string;
+  area: string;
+  mode: PlaceMode;
+  onExtracted: (phone: string) => void;
+}) {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'notfound'>('idle');
+
+  async function handleExtract(e: React.MouseEvent) {
+    e.stopPropagation();
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/places/extract-phone', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ place_id: placeId, area, mode }),
+      });
+      const data = await res.json();
+      if (data.formatted_phone_number) {
+        onExtracted(data.formatted_phone_number);
+      } else {
+        setStatus('notfound');
+      }
+    } catch {
+      setStatus('notfound');
+    }
+  }
+
+  if (status === 'notfound') {
+    return (
+      <div className="flex items-center gap-2 rounded-xl border border-dashed border-gray-200 bg-gray-50 px-3 py-2.5">
+        <Phone size={13} className="flex-shrink-0 text-gray-300" />
+        <span className="text-[11px] text-gray-300 italic">Number not available</span>
+      </div>
+    );
+  }
+
+  return (
+    <motion.button
+      whileTap={{ scale: 0.96 }}
+      onClick={handleExtract}
+      disabled={status === 'loading'}
+      className="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-orange-200 bg-orange-50/60 px-3 py-2.5 text-[11px] font-semibold text-orange-500 transition-colors hover:bg-orange-50 disabled:cursor-not-allowed disabled:opacity-60"
+    >
+      {status === 'loading' ? (
+        <>
+          <Loader2 size={12} className="animate-spin" />
+          Extracting…
+        </>
+      ) : (
+        <>
+          <Phone size={12} />
+          Extract Number
+        </>
+      )}
+    </motion.button>
+  );
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+
+export default function PlaceCard({ place, index, area, mode, onPhoneExtracted }: Props) {
+  const [phone, setPhone] = useState(place.formatted_phone_number ?? null);
+  const mapsUrl = `https://www.google.com/maps/place/?q=place_id:${place.place_id}`;
+  const isOpen = place.opening_hours?.open_now;
   const rank = RANK_CONFIG[index] ?? DEFAULT_RANK;
+
+  const accentColor = mode === 'school' ? 'blue' : 'orange';
+
+  function handleExtracted(extractedPhone: string) {
+    setPhone(extractedPhone);
+    onPhoneExtracted(place.place_id, extractedPhone);
+  }
 
   return (
     <motion.div
@@ -131,8 +218,18 @@ export default function RestaurantCard({ restaurant, index }: Props) {
       className="flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md"
     >
       {/* Top band */}
-      <div className="relative flex h-16 flex-shrink-0 items-center justify-center border-b border-orange-100 bg-gradient-to-br from-orange-50 to-amber-50">
-        <UtensilsCrossed size={20} className="text-orange-200" />
+      <div
+        className={`relative flex h-16 flex-shrink-0 items-center justify-center border-b ${
+          accentColor === 'blue'
+            ? 'border-blue-100 bg-gradient-to-br from-blue-50 to-indigo-50'
+            : 'border-orange-100 bg-gradient-to-br from-orange-50 to-amber-50'
+        }`}
+      >
+        {mode === 'school' ? (
+          <GraduationCap size={20} className="text-blue-200" />
+        ) : (
+          <UtensilsCrossed size={20} className="text-orange-200" />
+        )}
 
         {/* Rank badge */}
         <div className="absolute top-2 left-2">
@@ -148,16 +245,14 @@ export default function RestaurantCard({ restaurant, index }: Props) {
         <div className="absolute top-2 right-2 flex items-center gap-1">
           {isOpen !== undefined && (
             <span
-              className={`rounded-full px-2 py-0.5 text-[10px] leading-none font-semibold ${
-                isOpen ? 'bg-green-100 text-green-700' : 'bg-red-50 text-red-500'
-              }`}
+              className={`rounded-full px-2 py-0.5 text-[10px] leading-none font-semibold ${isOpen ? 'bg-green-100 text-green-700' : 'bg-red-50 text-red-500'}`}
             >
               {isOpen ? 'Open' : 'Closed'}
             </span>
           )}
-          {restaurant.price_level && (
+          {place.price_level && mode === 'restaurant' && (
             <span className="rounded-full border border-orange-100 bg-white px-1.5 py-0.5 text-[10px] leading-none font-semibold text-orange-600">
-              {PRICE_LABELS[restaurant.price_level]}
+              {PRICE_LABELS[place.price_level]}
             </span>
           )}
         </div>
@@ -165,45 +260,42 @@ export default function RestaurantCard({ restaurant, index }: Props) {
 
       {/* Body */}
       <div className="flex flex-1 flex-col gap-2 p-3">
-        {/* Name */}
         <h3 className="line-clamp-2 text-[13px] leading-snug font-semibold text-gray-900">
-          {restaurant.name}
+          {place.name}
         </h3>
 
-        {/* Rating */}
-        {restaurant.rating && (
+        {place.rating && (
           <div className="flex items-center gap-1">
             <Star size={12} className="flex-shrink-0 fill-amber-400 text-amber-400" />
-            <span className="text-xs font-semibold text-gray-800">
-              {restaurant.rating.toFixed(1)}
-            </span>
-            {restaurant.user_ratings_total && (
+            <span className="text-xs font-semibold text-gray-800">{place.rating.toFixed(1)}</span>
+            {place.user_ratings_total && (
               <span className="text-[11px] text-gray-400">
-                ({restaurant.user_ratings_total.toLocaleString()})
+                ({place.user_ratings_total.toLocaleString()})
               </span>
             )}
           </div>
         )}
 
-        {/* Address */}
-        {restaurant.formatted_address && (
+        {place.formatted_address && (
           <div className="flex items-start gap-1">
             <MapPin size={11} className="mt-0.5 flex-shrink-0 text-gray-400" />
             <span className="line-clamp-2 text-[11px] leading-relaxed text-gray-400">
-              {restaurant.formatted_address}
+              {place.formatted_address}
             </span>
           </div>
         )}
 
-        {/* Phone — hero element */}
+        {/* Phone section */}
         <div className="mt-1">
-          {restaurant.formatted_phone_number ? (
-            <PhoneRow number={restaurant.formatted_phone_number} />
+          {phone ? (
+            <PhoneRow number={phone} />
           ) : (
-            <div className="flex items-center gap-2 rounded-xl border border-dashed border-gray-200 bg-gray-50 px-3 py-2.5">
-              <Phone size={13} className="flex-shrink-0 text-gray-300" />
-              <span className="text-[11px] text-gray-300 italic">Number not available</span>
-            </div>
+            <ExtractButton
+              placeId={place.place_id}
+              area={area}
+              mode={mode}
+              onExtracted={handleExtracted}
+            />
           )}
         </div>
 
@@ -213,7 +305,11 @@ export default function RestaurantCard({ restaurant, index }: Props) {
             href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[11px] font-medium text-orange-500 transition-colors hover:text-orange-600"
+            className={`inline-flex items-center gap-1 text-[11px] font-medium transition-colors ${
+              accentColor === 'blue'
+                ? 'text-blue-500 hover:text-blue-600'
+                : 'text-orange-500 hover:text-orange-600'
+            }`}
           >
             <ExternalLink size={11} />
             View on Google Maps

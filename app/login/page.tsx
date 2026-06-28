@@ -3,8 +3,23 @@
 import { useState, FormEvent } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { UtensilsCrossed, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
+import { Loader2, AlertCircle, Eye, EyeOff, UtensilsCrossed, GraduationCap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+// Small pill tags shown below the app name
+function CategoryPill({ color, label }: { color: 'orange' | 'indigo'; label: string }) {
+  const styles = {
+    orange: 'bg-orange-50 text-orange-600 border-orange-100',
+    indigo: 'bg-indigo-50 text-indigo-600 border-indigo-100',
+  };
+  return (
+    <span
+      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10.5px] font-semibold tracking-wide ${styles[color]}`}
+    >
+      {label}
+    </span>
+  );
+}
 
 export default function LoginPage() {
   const router = useRouter();
@@ -44,13 +59,36 @@ export default function LoginPage() {
       >
         {/* Logo */}
         <div className="mb-8 flex flex-col items-center">
-          <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-[14px] bg-orange-600 shadow-sm">
-            <UtensilsCrossed size={20} className="text-white" />
+          {/* Dual-tone rectangular brand mark */}
+          <div className="mb-4 flex h-11 overflow-hidden rounded-2xl shadow-sm">
+            {/* Left half — Restaurants (orange) */}
+            <div className="flex w-11 items-center justify-center bg-orange-600">
+              <UtensilsCrossed size={18} className="text-white" />
+            </div>
+            {/* Divider */}
+            <div className="w-px bg-white/30" />
+            {/* Right half — Schools (indigo) */}
+            <div className="flex w-11 items-center justify-center bg-indigo-600">
+              <GraduationCap size={18} className="text-white" />
+            </div>
           </div>
-          <h1 className="text-[22px] leading-none font-black tracking-tight text-gray-900">
-            Restaurant Finder
+
+          <h1 className="text-[22px] leading-none font-black tracking-tight text-gray-900 uppercase">
+            Place Finder
           </h1>
-          <p className="mt-2 text-[13px] text-gray-400">Sign in to continue</p>
+
+          {/* Dual category pills */}
+          <div className="mt-2.5 flex items-center gap-1.5">
+            <CategoryPill color="orange" label="🍽 Restaurants" />
+            <span className="text-[10px] font-medium text-gray-300">+</span>
+            <CategoryPill color="indigo" label="🎓 Schools" />
+          </div>
+
+          <p className="mt-2.5 text-center text-[12px] leading-relaxed text-gray-400">
+            Discover the best places across India.
+            <br />
+            Sign in to explore.
+          </p>
         </div>
 
         {/* Card */}
@@ -134,7 +172,8 @@ export default function LoginPage() {
               type="submit"
               disabled={loading}
               whileTap={{ scale: 0.98 }}
-              className="mt-1 flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-orange-600 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-orange-700 disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-1 flex h-10 w-full items-center justify-center gap-2 rounded-xl text-[13px] font-semibold text-white shadow-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+              style={{ background: 'linear-gradient(135deg, #ea580c 0%, #4f46e5 100%)' }}
             >
               <AnimatePresence mode="wait" initial={false}>
                 {loading ? (
