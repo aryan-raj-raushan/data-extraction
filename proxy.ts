@@ -8,12 +8,11 @@ export default withAuth({
 
 export const config = {
   matcher: [
-    /*
-     * Match all paths except:
-     * - /login
-     * - _next/static, _next/image (Next.js internals)
-     * - favicon.ico
-     */
-    '/((?!login|_next/static|_next/image|favicon.ico).*)',
+    '/finder/:path*', // ← added: protects /finder and all sub-routes
+    '/dashboard/:path*',
+    '/editor/:path*',
+    '/users/:path*',
+    '/api/papers/:path*',
+    '/api/users/:path*',
   ],
 };
