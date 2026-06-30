@@ -1,12 +1,14 @@
 // components/places/PlaceFinder.tsx
 //
-// Replaces RestaurantFinder.tsx
 // Adds a Restaurant ↔ School mode toggle in the header.
 // Switching mode resets the drill-down to the state list and clears search.
+// While PlaceList is fetching/exporting, navigation controls (mode toggle,
+// sign out, back, breadcrumbs, search) are locked so the user can't change
+// context mid-fetch.
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import {
   ChevronRight,
@@ -17,6 +19,7 @@ import {
   UtensilsCrossed,
   GraduationCap,
   LogOut,
+  Loader2,
 } from 'lucide-react';
 import locations from '@/constants/json/cities.json';
 import statesRaw from '@/constants/json/states.json';
@@ -66,14 +69,27 @@ const segVariants: Variants = {
 
 // ── mode toggle ───────────────────────────────────────────────────────────────
 
-function ModeToggle({ mode, onChange }: { mode: PlaceMode; onChange: (m: PlaceMode) => void }) {
+function ModeToggle({
+  mode,
+  onChange,
+  disabled,
+}: {
+  mode: PlaceMode;
+  onChange: (m: PlaceMode) => void;
+  disabled?: boolean;
+}) {
   return (
-    <div className="flex items-center rounded-full border border-gray-200 bg-gray-100 p-0.5">
+    <div
+      className={`flex items-center rounded-full border border-gray-200 bg-gray-100 p-0.5 ${
+        disabled ? 'cursor-not-allowed opacity-50' : ''
+      }`}
+    >
       {(['restaurant', 'school'] as PlaceMode[]).map((m) => (
         <button
           key={m}
-          onClick={() => onChange(m)}
-          className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-semibold transition-all duration-150 ${
+          onClick={() => !disabled && onChange(m)}
+          disabled={disabled}
+          className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-semibold transition-all duration-150 disabled:cursor-not-allowed ${
             mode === m
               ? m === 'restaurant'
                 ? 'bg-white text-orange-600 shadow-sm'
@@ -95,11 +111,15 @@ export default function PlaceFinder() {
   const [mode, setMode] = useState<PlaceMode>('restaurant');
   const [step, setStep] = useState<Step>({ view: 'states' });
   const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const states: string[] = statesRaw;
 
+  // Stable callback so PlaceList's effect dependency doesn't churn every render.
+  const handleLoadingChange = useCallback((loading: boolean) => setIsLoading(loading), []);
+
   function handleModeChange(newMode: PlaceMode) {
-    if (newMode === mode) return;
+    if (isLoading || newMode === mode) return;
     setMode(newMode);
     // Reset drill-down so data doesn't bleed between modes
     setStep({ view: 'states' });
@@ -140,6 +160,7 @@ export default function PlaceFinder() {
   // ── click handlers ──────────────────────────────────────────────────────────
 
   function onSelectState(stateName: string) {
+    if (isLoading) return;
     const data = getStateData(stateName);
     setSearch('');
     if (!data) return;
@@ -147,7 +168,7 @@ export default function PlaceFinder() {
   }
 
   function onSelectCity(city: string) {
-    if (step.view !== 'cities') return;
+    if (isLoading || step.view !== 'cities') return;
     const data = getStateData(step.state);
     setSearch('');
     if (!data) return;
@@ -164,12 +185,13 @@ export default function PlaceFinder() {
   }
 
   function onSelectArea(area: string) {
-    if (step.view !== 'areas') return;
+    if (isLoading || step.view !== 'areas') return;
     setSearch('');
     setStep({ view: 'places', state: step.state, city: step.city, area });
   }
 
   function goBack() {
+    if (isLoading) return;
     setSearch('');
     if (step.view === 'cities') setStep({ view: 'states' });
     else if (step.view === 'areas') setStep({ view: 'cities', state: step.state });
@@ -185,6 +207,7 @@ export default function PlaceFinder() {
   }
 
   function jumpTo(view: 'states' | 'cities' | 'areas') {
+    if (isLoading) return;
     setSearch('');
     if (view === 'states') setStep({ view: 'states' });
     else if (view === 'cities' && 'state' in step) setStep({ view: 'cities', state: step.state });
@@ -268,21 +291,29 @@ export default function PlaceFinder() {
                 {mode === 'school' ? 'School Finder' : 'Restaurant Finder'}
               </h1>
               <p className="mt-0.5 text-xs text-gray-400">
-                {mode === 'school'
-                  ? 'Find the best schools across India'
-                  : 'Discover the best restaurants across India'}
+                {isLoading ? (
+                  <span className="flex items-center gap-1.5 text-gray-500">
+                    <Loader2 size={11} className="animate-spin" />
+                    Fetching data — please wait…
+                  </span>
+                ) : mode === 'school' ? (
+                  'Find the best schools across India'
+                ) : (
+                  'Discover the best restaurants across India'
+                )}
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <ModeToggle mode={mode} onChange={handleModeChange} />
+            <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading} />
 
             <button
               type="button"
-              onClick={() => signOut({ callbackUrl: '/login' })}
-              className="flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-[12px] font-medium text-gray-500 shadow-sm transition-colors hover:border-gray-300 hover:text-gray-700"
-              title="Sign out"
+              onClick={() => !isLoading && signOut({ callbackUrl: '/login' })}
+              disabled={isLoading}
+              title={isLoading ? 'Please wait for the current fetch to finish' : 'Sign out'}
+              className="flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-[12px] font-medium text-gray-500 shadow-sm transition-colors hover:border-gray-300 hover:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-gray-200 disabled:hover:text-gray-500"
             >
               <LogOut size={13} />
               Sign out
@@ -291,7 +322,11 @@ export default function PlaceFinder() {
         </div>
 
         {/* Breadcrumb / location bar */}
-        <div className="mb-6 flex w-fit max-w-full items-center gap-0 overflow-x-auto rounded-full border border-gray-200 bg-gray-50 px-1.5 py-1">
+        <div
+          className={`mb-6 flex w-fit max-w-full items-center gap-0 overflow-x-auto rounded-full border border-gray-200 bg-gray-50 px-1.5 py-1 transition-opacity ${
+            isLoading ? 'pointer-events-none opacity-60' : ''
+          }`}
+        >
           <AnimatePresence mode="popLayout">
             {segments.map((seg, i) => (
               <motion.div
@@ -309,7 +344,8 @@ export default function PlaceFinder() {
                 )}
                 <button
                   onClick={seg.onClick}
-                  className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-[12px] font-medium whitespace-nowrap transition-all duration-150 ${
+                  disabled={isLoading}
+                  className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-[12px] font-medium whitespace-nowrap transition-all duration-150 disabled:cursor-not-allowed ${
                     seg.active
                       ? 'border border-gray-200 bg-white text-gray-800 shadow-sm'
                       : 'text-gray-400 hover:bg-white/80 hover:text-gray-700'
@@ -330,7 +366,8 @@ export default function PlaceFinder() {
               <>
                 <button
                   onClick={goBack}
-                  className="flex items-center gap-1 text-xs text-gray-400 transition-colors hover:text-gray-700"
+                  disabled={isLoading}
+                  className="flex items-center gap-1 text-xs text-gray-400 transition-colors hover:text-gray-700 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:text-gray-400"
                 >
                   <ArrowLeft size={13} />
                   Back
@@ -360,12 +397,14 @@ export default function PlaceFinder() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={`Search ${step.view}…`}
-              className={`w-full rounded-xl border border-gray-200 bg-white py-2.5 pr-8 pl-8 text-[13px] text-gray-900 shadow-sm transition-all outline-none placeholder:text-gray-400 focus:ring-2 ${accent.focusRing}`}
+              disabled={isLoading}
+              className={`w-full rounded-xl border border-gray-200 bg-white py-2.5 pr-8 pl-8 text-[13px] text-gray-900 shadow-sm transition-all outline-none placeholder:text-gray-400 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${accent.focusRing}`}
             />
             {search && (
               <button
                 onClick={() => setSearch('')}
-                className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 transition-colors hover:text-gray-600"
+                disabled={isLoading}
+                className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 transition-colors hover:text-gray-600 disabled:cursor-not-allowed"
               >
                 <X size={13} />
               </button>
@@ -400,9 +439,12 @@ export default function PlaceFinder() {
                       key={item}
                       variants={itemVariants}
                       onClick={() => clickFns[step.view]?.(item)}
-                      whileHover={{ y: -2, boxShadow: '0 6px 16px rgba(0,0,0,0.08)' }}
-                      whileTap={{ scale: 0.97 }}
-                      className={`group flex items-center justify-between gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-left text-[12.5px] font-medium shadow-sm transition-all duration-150 hover:shadow-md ${accent.hover}`}
+                      disabled={isLoading}
+                      whileHover={
+                        isLoading ? undefined : { y: -2, boxShadow: '0 6px 16px rgba(0,0,0,0.08)' }
+                      }
+                      whileTap={isLoading ? undefined : { scale: 0.97 }}
+                      className={`group flex items-center justify-between gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-left text-[12.5px] font-medium shadow-sm transition-all duration-150 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:shadow-sm ${accent.hover}`}
                     >
                       <span className="truncate text-gray-800">{item}</span>
                       <ChevronRight
@@ -427,7 +469,13 @@ export default function PlaceFinder() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.18 }}
             >
-              <PlaceList area={step.area} city={step.city} state={step.state} mode={mode} />
+              <PlaceList
+                area={step.area}
+                city={step.city}
+                state={step.state}
+                mode={mode}
+                onLoadingChange={handleLoadingChange}
+              />
             </motion.div>
           )}
         </AnimatePresence>

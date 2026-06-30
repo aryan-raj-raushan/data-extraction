@@ -17,9 +17,6 @@ import {
   Zap,
   ShieldCheck,
   RefreshCw,
-  IndianRupee,
-  AlertTriangle,
-  Wifi,
   WifiOff,
   TrendingDown,
   BarChart3,
@@ -66,7 +63,15 @@ function AnimSection({
   );
 }
 
-function CountUp({ end, suffix = '', prefix = '' }: { end: number; suffix?: string; prefix?: string }) {
+function CountUp({
+  end,
+  suffix = '',
+  prefix = '',
+}: {
+  end: number;
+  suffix?: string;
+  prefix?: string;
+}) {
   const [val, setVal] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
@@ -76,12 +81,20 @@ function CountUp({ end, suffix = '', prefix = '' }: { end: number; suffix?: stri
     const step = end / 60;
     const timer = setInterval(() => {
       start += step;
-      if (start >= end) { setVal(end); clearInterval(timer); }
-      else setVal(Math.floor(start));
+      if (start >= end) {
+        setVal(end);
+        clearInterval(timer);
+      } else setVal(Math.floor(start));
     }, 16);
     return () => clearInterval(timer);
   }, [inView, end]);
-  return <span ref={ref}>{prefix}{val.toLocaleString()}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {prefix}
+      {val.toLocaleString()}
+      {suffix}
+    </span>
+  );
 }
 
 // ─── Mode-aware accent ────────────────────────────────────────────────────────
@@ -104,7 +117,9 @@ function ModeToggle({
 }) {
   const sm = size === 'sm';
   return (
-    <div className={`inline-flex rounded-xl border border-gray-200 bg-white p-1 shadow-sm ${sm ? 'gap-0.5' : 'gap-1'}`}>
+    <div
+      className={`inline-flex rounded-xl border border-gray-200 bg-white p-1 shadow-sm ${sm ? 'gap-0.5' : 'gap-1'}`}
+    >
       {(['restaurant', 'school'] as Mode[]).map((m) => {
         const active = mode === m;
         const color = m === 'restaurant' ? ORANGE : INDIGO;
@@ -114,9 +129,7 @@ function ModeToggle({
             key={m}
             onClick={() => onChange(m)}
             whileTap={{ scale: 0.97 }}
-            className={`flex items-center gap-1.5 rounded-lg font-semibold transition-all
-              ${sm ? 'px-2.5 py-1 text-[11px]' : 'px-4 py-2 text-[13px]'}
-              ${active ? 'text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+            className={`flex items-center gap-1.5 rounded-lg font-semibold transition-all ${sm ? 'px-2.5 py-1 text-[11px]' : 'px-4 py-2 text-[13px]'} ${active ? 'text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
             style={active ? { background: color } : {}}
           >
             <Icon size={sm ? 11 : 14} />
@@ -135,22 +148,70 @@ function AppMockup({ mode }: { mode: Mode }) {
 
   const places = isRest
     ? [
-      { name: 'Spice Garden', area: 'Connaught Place, Delhi', rating: 4.7, phone: '+91 98104 55213', cached: true },
-      { name: 'Bombay Bites', area: 'Bandra West, Mumbai', rating: 4.5, phone: null, cached: false },
-      { name: 'South Tadka', area: 'Koramangala, Bengaluru', rating: 4.6, phone: '+91 80423 11092', cached: true },
-      { name: 'Chai & More', area: 'Salt Lake, Kolkata', rating: 4.3, phone: null, cached: false },
-    ]
+        {
+          name: 'Spice Garden',
+          area: 'Connaught Place, Delhi',
+          rating: 4.7,
+          phone: '+91 98104 55213',
+          cached: true,
+        },
+        {
+          name: 'Bombay Bites',
+          area: 'Bandra West, Mumbai',
+          rating: 4.5,
+          phone: null,
+          cached: false,
+        },
+        {
+          name: 'South Tadka',
+          area: 'Koramangala, Bengaluru',
+          rating: 4.6,
+          phone: '+91 80423 11092',
+          cached: true,
+        },
+        {
+          name: 'Chai & More',
+          area: 'Salt Lake, Kolkata',
+          rating: 4.3,
+          phone: null,
+          cached: false,
+        },
+      ]
     : [
-      { name: 'Delhi Public School', area: 'Vasant Kunj, Delhi', rating: 4.8, phone: '+91 11 4051 8800', cached: true },
-      { name: 'Ryan International', area: 'Andheri, Mumbai', rating: 4.6, phone: null, cached: false },
-      { name: 'Baldwin Boys School', area: 'Bengaluru City', rating: 4.7, phone: '+91 80 2221 3483', cached: true },
-      { name: 'La Martiniere', area: 'Hazratganj, Lucknow', rating: 4.5, phone: null, cached: false },
-    ];
+        {
+          name: 'Delhi Public School',
+          area: 'Vasant Kunj, Delhi',
+          rating: 4.8,
+          phone: '+91 11 4051 8800',
+          cached: true,
+        },
+        {
+          name: 'Ryan International',
+          area: 'Andheri, Mumbai',
+          rating: 4.6,
+          phone: null,
+          cached: false,
+        },
+        {
+          name: 'Baldwin Boys School',
+          area: 'Bengaluru City',
+          rating: 4.7,
+          phone: '+91 80 2221 3483',
+          cached: true,
+        },
+        {
+          name: 'La Martiniere',
+          area: 'Hazratganj, Lucknow',
+          rating: 4.5,
+          phone: null,
+          cached: false,
+        },
+      ];
 
   return (
-    <div className="w-full max-w-[420px] rounded-2xl border border-gray-200 bg-white shadow-2xl overflow-hidden select-none">
+    <div className="w-full max-w-[420px] overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl select-none">
       {/* Top bar */}
-      <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between bg-gray-50">
+      <div className="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-4 py-3">
         <div className="flex items-center gap-2">
           <div className="flex h-6 w-11 overflow-hidden rounded-md shadow-sm">
             <div className="flex w-5 items-center justify-center bg-orange-600">
@@ -163,19 +224,19 @@ function AppMockup({ mode }: { mode: Mode }) {
           </div>
           <span className="text-[12px] font-bold text-gray-900">Place Finder</span>
         </div>
-        <ModeToggle mode={mode} onChange={() => { }} size="sm" />
+        <ModeToggle mode={mode} onChange={() => {}} size="sm" />
       </div>
 
       {/* Search bar mockup */}
-      <div className="px-4 py-3 border-b border-gray-100">
+      <div className="border-b border-gray-100 px-4 py-3">
         <div className="flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
-          <MapPin size={11} className="text-gray-400 shrink-0" />
+          <MapPin size={11} className="shrink-0 text-gray-400" />
           <span className="text-[11px] text-gray-400">
             {isRest ? 'Koramangala, Bengaluru' : 'Vasant Kunj, New Delhi'}
           </span>
           <div className="ml-auto flex items-center gap-1">
             <span
-              className="text-[9px] font-semibold px-1.5 py-0.5 rounded"
+              className="rounded px-1.5 py-0.5 text-[9px] font-semibold"
               style={{ background: accentLight(mode), color: color }}
             >
               From cache
@@ -189,32 +250,33 @@ function AppMockup({ mode }: { mode: Mode }) {
         {places.map((p, i) => (
           <div key={i} className="flex items-center gap-3 px-4 py-2.5">
             <div
-              className="h-7 w-7 rounded-lg flex items-center justify-center shrink-0"
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
               style={{ background: accentLight(mode) }}
             >
-              {isRest
-                ? <UtensilsCrossed size={12} style={{ color }} />
-                : <GraduationCap size={12} style={{ color }} />
-              }
+              {isRest ? (
+                <UtensilsCrossed size={12} style={{ color }} />
+              ) : (
+                <GraduationCap size={12} style={{ color }} />
+              )}
             </div>
-            <div className="flex-1 min-w-0">
-              <div className="text-[11.5px] font-semibold text-gray-900 truncate">{p.name}</div>
-              <div className="text-[10px] text-gray-400 truncate">{p.area}</div>
+            <div className="min-w-0 flex-1">
+              <div className="truncate text-[11.5px] font-semibold text-gray-900">{p.name}</div>
+              <div className="truncate text-[10px] text-gray-400">{p.area}</div>
             </div>
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex shrink-0 items-center gap-2">
               <span className="flex items-center gap-0.5 text-[10px] font-medium text-gray-500">
                 <Star size={9} className="fill-amber-400 text-amber-400" />
                 {p.rating}
               </span>
               {p.phone ? (
                 <span
-                  className="text-[9px] font-mono font-medium px-1.5 py-0.5 rounded"
+                  className="rounded px-1.5 py-0.5 font-mono text-[9px] font-medium"
                   style={{ background: accentLight(mode), color }}
                 >
                   {p.phone.slice(-8)}
                 </span>
               ) : (
-                <button className="text-[9px] font-semibold px-2 py-0.5 rounded border text-gray-400 border-gray-200 hover:border-gray-400 transition-colors">
+                <button className="rounded border border-gray-200 px-2 py-0.5 text-[9px] font-semibold text-gray-400 transition-colors hover:border-gray-400">
                   Extract Number
                 </button>
               )}
@@ -224,11 +286,11 @@ function AppMockup({ mode }: { mode: Mode }) {
       </div>
 
       {/* Footer bar */}
-      <div className="px-4 py-2.5 border-t border-gray-100 bg-gray-50 flex items-center justify-between">
+      <div className="flex items-center justify-between border-t border-gray-100 bg-gray-50 px-4 py-2.5">
         <span className="text-[10px] text-gray-400">4 results · 2 numbers extracted</span>
         <div className="flex items-center gap-1.5">
           <button
-            className="flex items-center gap-1 text-[10px] font-semibold rounded-md px-2 py-1 text-white"
+            className="flex items-center gap-1 rounded-md px-2 py-1 text-[10px] font-semibold text-white"
             style={{ background: color }}
           >
             <Download size={9} />
@@ -241,7 +303,11 @@ function AppMockup({ mode }: { mode: Mode }) {
 }
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
-function Navbar({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; mode: Mode; setMode: (m: Mode) => void }>) {
+function Navbar({
+  isLoggedIn,
+  mode,
+  setMode,
+}: Readonly<{ isLoggedIn: boolean; mode: Mode; setMode: (m: Mode) => void }>) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 24);
@@ -249,8 +315,10 @@ function Navbar({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; m
     return () => window.removeEventListener('scroll', h);
   }, []);
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 lg:px-16 ${scrolled ? 'bg-white/95 backdrop-blur-sm border-b border-gray-100' : 'bg-transparent'}`}>
-      <div className="max-w-6xl mx-auto flex items-center justify-between h-16">
+    <nav
+      className={`fixed top-0 right-0 left-0 z-50 px-6 transition-all duration-300 lg:px-16 ${scrolled ? 'border-b border-gray-100 bg-white/95 backdrop-blur-sm' : 'bg-transparent'}`}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="flex h-7 w-14 overflow-hidden rounded-lg shadow-sm">
             <div className="flex w-6 items-center justify-center bg-orange-600">
@@ -261,23 +329,32 @@ function Navbar({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; m
               <GraduationCap size={12} className="text-white" />
             </div>
           </div>
-          <span className="font-bold text-[15px] text-gray-900 tracking-tight">
+          <span className="text-[15px] font-bold tracking-tight text-gray-900">
             Place<span style={{ color: accent(mode) }}>Finder</span>
           </span>
         </div>
 
-        <div className="hidden md:flex items-center gap-1">
-          {[['#features', 'Features'], ['#savings', 'Cost Savings'], ['#coverage', 'Coverage'], ['#faq', 'FAQ']].map(([href, label]) => (
-            <a key={href} href={href} className="px-3 py-1.5 text-[13px] text-gray-500 hover:text-gray-900 transition-colors">
+        <div className="hidden items-center gap-1 md:flex">
+          {[
+            ['#features', 'Features'],
+            ['#savings', 'Cost Savings'],
+            ['#coverage', 'Coverage'],
+            ['#faq', 'FAQ'],
+          ].map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              className="px-3 py-1.5 text-[13px] text-gray-500 transition-colors hover:text-gray-900"
+            >
               {label}
             </a>
           ))}
-          <div className="ml-4 mr-3">
+          <div className="mr-3 ml-4">
             <ModeToggle mode={mode} onChange={setMode} size="sm" />
           </div>
           <a
             href={isLoggedIn ? '/finder' : '/login'}
-            className="px-4 py-2 rounded-lg text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
+            className="rounded-lg px-4 py-2 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
             style={{ background: `linear-gradient(135deg, ${ORANGE} 0%, ${INDIGO} 100%)` }}
           >
             {isLoggedIn ? 'Dashboard →' : 'Get Started →'}
@@ -289,15 +366,19 @@ function Navbar({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; m
 }
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
-function Hero({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; mode: Mode; setMode: (m: Mode) => void }>) {
+function Hero({
+  isLoggedIn,
+  mode,
+  setMode,
+}: Readonly<{ isLoggedIn: boolean; mode: Mode; setMode: (m: Mode) => void }>) {
   const color = accent(mode);
   const isRest = mode === 'restaurant';
 
   return (
-    <section className="relative min-h-screen bg-white flex items-center overflow-hidden px-6 lg:px-16 pt-20 pb-16">
-      <div className="absolute top-16 left-0 right-0 h-px bg-gray-100" />
+    <section className="relative flex min-h-screen items-center overflow-hidden bg-white px-6 pt-20 pb-16 lg:px-16">
+      <div className="absolute top-16 right-0 left-0 h-px bg-gray-100" />
       <div
-        className="absolute inset-0 opacity-30 pointer-events-none"
+        className="pointer-events-none absolute inset-0 opacity-30"
         style={{
           backgroundImage: 'radial-gradient(circle, #d1d5db 1px, transparent 1px)',
           backgroundSize: '28px 28px',
@@ -311,12 +392,12 @@ function Hero({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; mod
           animate={{ opacity: 0.035 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}
-          className="absolute inset-0 pointer-events-none"
+          className="pointer-events-none absolute inset-0"
           style={{ background: color }}
         />
       </AnimatePresence>
 
-      <div className="max-w-6xl mx-auto w-full z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-2">
         <div>
           <motion.div
             initial={{ opacity: 0 }}
@@ -336,22 +417,37 @@ function Hero({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; mod
               transition={{ duration: 0.35 }}
             >
               <div
-                className="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-6 text-[11px] font-semibold tracking-widest uppercase border"
+                className="mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold tracking-widest uppercase"
                 style={{ borderColor: color, color, background: accentLight(mode) }}
               >
-                <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: color }} />
+                <span
+                  className="inline-block h-1.5 w-1.5 rounded-full"
+                  style={{ background: color }}
+                />
                 {isRest ? 'Restaurant Discovery · India' : 'School Discovery · India'}
               </div>
 
-              <h1 className="text-[3rem] lg:text-[3.8rem] font-black text-gray-900 leading-[1.0] tracking-tight mb-6">
+              <h1 className="mb-6 text-[3rem] leading-[1.0] font-black tracking-tight text-gray-900 lg:text-[3.8rem]">
                 {isRest ? (
-                  <>Find the best<br /><span style={{ color }}>restaurants.</span><br />Get their numbers.</>
+                  <>
+                    Find the best
+                    <br />
+                    <span style={{ color }}>restaurants.</span>
+                    <br />
+                    Get their numbers.
+                  </>
                 ) : (
-                  <>Find the best<br /><span style={{ color }}>schools.</span><br />Get their numbers.</>
+                  <>
+                    Find the best
+                    <br />
+                    <span style={{ color }}>schools.</span>
+                    <br />
+                    Get their numbers.
+                  </>
                 )}
               </h1>
 
-              <p className="text-[16px] text-gray-500 leading-relaxed mb-8 max-w-[460px]">
+              <p className="mb-8 max-w-[460px] text-[16px] leading-relaxed text-gray-500">
                 {isRest
                   ? 'Search any state, city, or area in India. Get top-rated restaurants, extract contact numbers on demand, export to Excel — all with intelligent caching that slashes your Google API costs.'
                   : 'Search any state, city, or area in India. Get top-rated schools, extract contact numbers on demand, export to Excel — all with intelligent caching that slashes your Google API costs.'}
@@ -363,19 +459,19 @@ function Hero({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; mod
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.22 }}
-            className="flex flex-wrap gap-3 mb-12"
+            className="mb-12 flex flex-wrap gap-3"
           >
             <a
               href={isLoggedIn ? '/finder' : '/login'}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
               style={{ background: `linear-gradient(135deg, ${ORANGE} 0%, ${INDIGO} 100%)` }}
             >
               {isLoggedIn ? 'Go to Dashboard' : 'Start Exploring Free'}
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href="#features"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-[14px] font-medium text-gray-700 border border-gray-200 hover:border-gray-400 transition-colors bg-white"
+              className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-3 text-[14px] font-medium text-gray-700 transition-colors hover:border-gray-400"
             >
               See How It Works
             </a>
@@ -385,7 +481,7 @@ function Hero({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; mod
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap gap-8 pt-8 border-t border-gray-100"
+            className="flex flex-wrap gap-8 border-t border-gray-100 pt-8"
           >
             {[
               { val: 28, suf: '+', label: 'Indian states covered' },
@@ -394,10 +490,10 @@ function Hero({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; mod
               { val: 1200, suf: '+', label: 'Active users' },
             ].map((s, i) => (
               <div key={i} className="flex flex-col">
-                <span className="text-[22px] font-black text-gray-900 tracking-tight leading-none">
+                <span className="text-[22px] leading-none font-black tracking-tight text-gray-900">
                   <CountUp end={s.val} suffix={s.suf} />
                 </span>
-                <span className="text-[11px] text-gray-400 mt-1">{s.label}</span>
+                <span className="mt-1 text-[11px] text-gray-400">{s.label}</span>
               </div>
             ))}
           </motion.div>
@@ -425,18 +521,18 @@ function Hero({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; mod
             <motion.div
               animate={{ y: [0, -5, 0] }}
               transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-              className="absolute -top-4 -right-4 bg-gray-900 text-white rounded-xl px-3 py-2 text-[11px] font-medium shadow-xl flex items-center gap-1.5"
+              className="absolute -top-4 -right-4 flex items-center gap-1.5 rounded-xl bg-gray-900 px-3 py-2 text-[11px] font-medium text-white shadow-xl"
             >
-              <Database className="w-3 h-3 text-green-400" />
+              <Database className="h-3 w-3 text-green-400" />
               Served from cache · ₹0 API cost
             </motion.div>
 
             <motion.div
               animate={{ y: [0, 5, 0] }}
               transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut', delay: 0.6 }}
-              className="absolute -bottom-3 -left-4 bg-white border border-gray-200 text-gray-900 rounded-xl px-3 py-2 text-[11px] font-medium shadow-xl flex items-center gap-1.5"
+              className="absolute -bottom-3 -left-4 flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-3 py-2 text-[11px] font-medium text-gray-900 shadow-xl"
             >
-              <Phone className="w-3 h-3" style={{ color }} />
+              <Phone className="h-3 w-3" style={{ color }} />
               Number extracted &amp; saved to DB
             </motion.div>
           </div>
@@ -449,21 +545,44 @@ function Hero({ isLoggedIn, mode, setMode }: Readonly<{ isLoggedIn: boolean; mod
 // ─── State ticker ─────────────────────────────────────────────────────────────
 function StateTicker() {
   const states = [
-    'Delhi', 'Maharashtra', 'Karnataka', 'Tamil Nadu', 'Telangana',
-    'Uttar Pradesh', 'Gujarat', 'Rajasthan', 'West Bengal', 'Kerala',
-    'Madhya Pradesh', 'Punjab', 'Haryana', 'Bihar', 'Odisha',
-    'Assam', 'Jharkhand', 'Uttarakhand', 'Himachal Pradesh', 'Goa',
-    'Chhattisgarh', 'Chandigarh', 'J&K', 'Andhra Pradesh', 'Tripura',
+    'Delhi',
+    'Maharashtra',
+    'Karnataka',
+    'Tamil Nadu',
+    'Telangana',
+    'Uttar Pradesh',
+    'Gujarat',
+    'Rajasthan',
+    'West Bengal',
+    'Kerala',
+    'Madhya Pradesh',
+    'Punjab',
+    'Haryana',
+    'Bihar',
+    'Odisha',
+    'Assam',
+    'Jharkhand',
+    'Uttarakhand',
+    'Himachal Pradesh',
+    'Goa',
+    'Chhattisgarh',
+    'Chandigarh',
+    'J&K',
+    'Andhra Pradesh',
+    'Tripura',
   ];
   return (
-    <div className="border-y border-gray-100 overflow-hidden py-3 bg-gray-50">
+    <div className="overflow-hidden border-y border-gray-100 bg-gray-50 py-3">
       <motion.div
         animate={{ x: ['0%', '-50%'] }}
         transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
         className="flex whitespace-nowrap"
       >
         {[...states, ...states].map((s, i) => (
-          <span key={i} className="inline-flex items-center gap-2 px-5 text-[11px] text-gray-400 font-medium">
+          <span
+            key={i}
+            className="inline-flex items-center gap-2 px-5 text-[11px] font-medium text-gray-400"
+          >
             <MapPin size={8} className="text-gray-300" />
             {s}
           </span>
@@ -527,7 +646,7 @@ const FEATURES = [
     Icon: MapPin,
     title: 'Full India Coverage — State → City → Area',
     spec: '28 states · 500+ cities · 5,000+ areas',
-    desc: 'Browse India\'s full administrative hierarchy — pick a state, drill into a city, then narrow to an area. Or type directly in the search bar. Every tier-1, tier-2, and tier-3 city included.',
+    desc: "Browse India's full administrative hierarchy — pick a state, drill into a city, then narrow to an area. Or type directly in the search bar. Every tier-1, tier-2, and tier-3 city included.",
     points: [
       'Visual card grid: click to drill down',
       'Search bar autocomplete across all levels',
@@ -552,39 +671,43 @@ const FEATURES = [
 function Features({ mode }: { mode: Mode }) {
   const color = accent(mode);
   return (
-    <section id="features" className="bg-white py-24 px-6 lg:px-16 border-t border-gray-100">
-      <div className="max-w-6xl mx-auto">
+    <section id="features" className="border-t border-gray-100 bg-white px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-6xl">
         <AnimSection className="mb-16">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color }}>
+          <p className="mb-3 text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color }}>
             Platform Features
           </p>
-          <h2 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-tight">
+          <h2 className="text-3xl leading-tight font-black tracking-tight text-gray-900 lg:text-4xl">
             Built for discovery teams,
             <br />
             not casual browsers.
           </h2>
-          <p className="text-[15px] text-gray-500 mt-3 max-w-lg">
-            Every feature is designed around one goal: help you find, contact, and export places faster — without burning your Google API budget.
+          <p className="mt-3 max-w-lg text-[15px] text-gray-500">
+            Every feature is designed around one goal: help you find, contact, and export places
+            faster — without burning your Google API budget.
           </p>
         </AnimSection>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map(({ Icon, title, spec, desc, points }, i) => (
             <AnimSection key={i} delay={i * 0.05}>
-              <div className="border border-gray-200 rounded-2xl p-7 h-full flex flex-col hover:border-gray-400 transition-colors">
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-gray-100">
-                    <Icon className="w-4 h-4 text-gray-700" />
+              <div className="flex h-full flex-col rounded-2xl border border-gray-200 p-7 transition-colors hover:border-gray-400">
+                <div className="mb-5 flex items-center justify-between">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100">
+                    <Icon className="h-4 w-4 text-gray-700" />
                   </div>
-                  <span className="text-[10px] font-semibold rounded-full px-2.5 py-0.5" style={{ background: accentLight(mode), color }}>
+                  <span
+                    className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold"
+                    style={{ background: accentLight(mode), color }}
+                  >
                     {spec}
                   </span>
                 </div>
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">{title}</h3>
-                <p className="text-[12.5px] text-gray-500 leading-relaxed mb-5 flex-1">{desc}</p>
-                <ul className="border-t border-gray-100 pt-4 flex flex-col gap-1.5">
+                <h3 className="mb-2 text-[15px] font-bold text-gray-900">{title}</h3>
+                <p className="mb-5 flex-1 text-[12.5px] leading-relaxed text-gray-500">{desc}</p>
+                <ul className="flex flex-col gap-1.5 border-t border-gray-100 pt-4">
                   {points.map((p, j) => (
                     <li key={j} className="flex items-start gap-2 text-[12px] text-gray-600">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-gray-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gray-400" />
                       {p}
                     </li>
                   ))}
@@ -604,8 +727,8 @@ function CostSavings({ mode }: { mode: Mode }) {
   const [activeTeam, setActiveTeam] = useState<'A' | 'B'>('A');
 
   // Pricing constants
-  const SEARCH_COST = 2.69;   // ₹ per Places Nearby Search call
-  const DETAIL_COST = 1.43;   // ₹ per Place Details call
+  const SEARCH_COST = 2.69; // ₹ per Places Nearby Search call
+  const DETAIL_COST = 1.43; // ₹ per Place Details call
   const WORKING_DAYS = 22;
 
   // Team scenario: 6 people, 200 searches/person/day, 150 numbers/day
@@ -619,10 +742,11 @@ function CostSavings({ mode }: { mode: Mode }) {
   const teamARestartWeekly = 3 * TEAM_SIZE * SEARCH_COST; // ~3 restarts/person/week
   const teamAOverlapDaily = 2 * SEARCHES_PER_PERSON * SEARCH_COST; // 2 members overlap same city
   const teamADaily = teamASearchDaily + teamADetailDaily + teamAOverlapDaily;
-  const teamAMonthly = (teamADaily * WORKING_DAYS) + (teamARestartWeekly * 4.4);
+  const teamAMonthly = teamADaily * WORKING_DAYS + teamARestartWeekly * 4.4;
 
   // Team B (PlaceFinder): only 1 search per area hits API (cache hit ~85%), details only first time
-  const teamBSearchDaily = SEARCHES_PER_PERSON * SEARCH_COST + (TEAM_SIZE - 1) * SEARCHES_PER_PERSON * 0.15 * SEARCH_COST;
+  const teamBSearchDaily =
+    SEARCHES_PER_PERSON * SEARCH_COST + (TEAM_SIZE - 1) * SEARCHES_PER_PERSON * 0.15 * SEARCH_COST;
   const teamBDetailDaily = NUMBERS_PER_DAY * DETAIL_COST * 0.05; // 95% already cached
   const teamBDaily = teamBSearchDaily + teamBDetailDaily;
   const teamBMonthly = teamBDaily * WORKING_DAYS;
@@ -715,42 +839,59 @@ function CostSavings({ mode }: { mode: Mode }) {
   const [calcNumbers, setCalcNumbers] = useState(150);
   const [calcCache, setCalcCache] = useState(80);
 
-  const calcRawMonthly = (calcTeam * calcSearches * SEARCH_COST + calcNumbers * DETAIL_COST) * WORKING_DAYS;
-  const calcPFMonthly = (calcTeam * calcSearches * ((100 - calcCache) / 100) * SEARCH_COST + calcNumbers * DETAIL_COST * 0.05) * WORKING_DAYS;
+  const calcRawMonthly =
+    (calcTeam * calcSearches * SEARCH_COST + calcNumbers * DETAIL_COST) * WORKING_DAYS;
+  const calcPFMonthly =
+    (calcTeam * calcSearches * ((100 - calcCache) / 100) * SEARCH_COST +
+      calcNumbers * DETAIL_COST * 0.05) *
+    WORKING_DAYS;
   const calcSavedMonthly = calcRawMonthly - calcPFMonthly;
   const calcSavedAnnual = calcSavedMonthly * 12;
   const calcPct = Math.round((calcSavedMonthly / calcRawMonthly) * 100);
 
   return (
-    <section id="savings" className="bg-gray-900 py-24 px-6 lg:px-16">
-      <div className="max-w-5xl mx-auto">
+    <section id="savings" className="bg-gray-900 px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-5xl">
         <AnimSection className="mb-14">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color }}>
+          <p className="mb-3 text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color }}>
             API Cost Intelligence
           </p>
-          <h2 className="text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight max-w-2xl">
+          <h2 className="max-w-2xl text-3xl leading-tight font-black tracking-tight text-white lg:text-4xl">
             Google API costs scale with your team.
             <br />
-            Our cache doesn't.
+            Our cache doesn&apos;t.
           </h2>
-          <p className="text-[15px] text-gray-400 mt-4 max-w-xl leading-relaxed">
-            Two 6-person sales teams. Same workflow: 200 places searched per day, 150 numbers extracted.
-            One uses raw Google API. One uses PlaceFinder. Here's exactly what happens to their bill.
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-gray-400">
+            Two 6-person sales teams. Same workflow: 200 places searched per day, 150 numbers
+            extracted. One uses raw Google API. One uses PlaceFinder. Here&apos;s exactly what
+            happens to their bill.
           </p>
         </AnimSection>
 
         {/* API Pricing Reference */}
         <AnimSection className="mb-10">
-          <div className="grid grid-cols-2 gap-4 max-w-lg">
+          <div className="grid max-w-lg grid-cols-2 gap-4">
             {[
-              { label: 'Places Nearby Search', usd: '$32 / 1,000 calls', inr: `≈ ₹${SEARCH_COST} per search`, icon: Search },
-              { label: 'Place Details (phone #)', usd: '$17 / 1,000 calls', inr: `≈ ₹${DETAIL_COST} per number`, icon: PhoneCall },
+              {
+                label: 'Places Nearby Search',
+                usd: '$32 / 1,000 calls',
+                inr: `≈ ₹${SEARCH_COST} per search`,
+                icon: Search,
+              },
+              {
+                label: 'Place Details (phone #)',
+                usd: '$17 / 1,000 calls',
+                inr: `≈ ₹${DETAIL_COST} per number`,
+                icon: PhoneCall,
+              },
             ].map(({ label, usd, inr, icon: Icon }, i) => (
-              <div key={i} className="bg-gray-800 border border-gray-700 rounded-xl p-4">
-                <Icon className="w-4 h-4 text-gray-500 mb-3" />
-                <div className="text-[12px] font-semibold text-gray-300 mb-1">{label}</div>
+              <div key={i} className="rounded-xl border border-gray-700 bg-gray-800 p-4">
+                <Icon className="mb-3 h-4 w-4 text-gray-500" />
+                <div className="mb-1 text-[12px] font-semibold text-gray-300">{label}</div>
                 <div className="text-[11px] text-gray-500">{usd}</div>
-                <div className="text-[13px] font-black mt-1" style={{ color }}>{inr}</div>
+                <div className="mt-1 text-[13px] font-black" style={{ color }}>
+                  {inr}
+                </div>
               </div>
             ))}
           </div>
@@ -758,22 +899,24 @@ function CostSavings({ mode }: { mode: Mode }) {
 
         {/* Team Toggle */}
         <AnimSection className="mb-6">
-          <p className="text-[11px] text-gray-500 mb-3 uppercase tracking-widest font-semibold">Select a team to inspect</p>
-          <div className="inline-flex rounded-xl border border-gray-700 bg-gray-800 p-1 gap-1">
+          <p className="mb-3 text-[11px] font-semibold tracking-widest text-gray-500 uppercase">
+            Select a team to inspect
+          </p>
+          <div className="inline-flex gap-1 rounded-xl border border-gray-700 bg-gray-800 p-1">
             <button
               onClick={() => setActiveTeam('A')}
-              className={`px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all ${activeTeam === 'A' ? 'bg-red-900/60 text-red-300 border border-red-800' : 'text-gray-400 hover:text-gray-200'}`}
+              className={`rounded-lg px-5 py-2.5 text-[13px] font-semibold transition-all ${activeTeam === 'A' ? 'border border-red-800 bg-red-900/60 text-red-300' : 'text-gray-400 hover:text-gray-200'}`}
             >
               ❌ Team A — Raw Google API
             </button>
             <button
               onClick={() => setActiveTeam('B')}
-              className={`px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all ${activeTeam === 'B' ? 'bg-green-900/40 text-green-300 border border-green-800' : 'text-gray-400 hover:text-gray-200'}`}
+              className={`rounded-lg px-5 py-2.5 text-[13px] font-semibold transition-all ${activeTeam === 'B' ? 'border border-green-800 bg-green-900/40 text-green-300' : 'text-gray-400 hover:text-gray-200'}`}
             >
               ✅ Team B — PlaceFinder
             </button>
           </div>
-          <p className="text-[12px] text-gray-600 mt-3">
+          <p className="mt-3 text-[12px] text-gray-600">
             {activeTeam === 'A'
               ? '6 people · 200 searches/person/day · 150 numbers extracted daily · no shared cache'
               : '6 people · 200 searches/person/day · 150 numbers extracted daily · shared DB cache'}
@@ -789,23 +932,37 @@ function CostSavings({ mode }: { mode: Mode }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25 }}
-              className="space-y-2 mb-8"
+              className="mb-8 space-y-2"
             >
               {activeSteps.map(({ Icon, label, note, cost, bad }, i) => (
                 <div
                   key={i}
-                  className={`flex items-center gap-4 rounded-xl border px-5 py-3.5 transition-colors ${bad ? 'border-red-900/60 bg-red-950/40' : 'border-gray-700 bg-gray-800'
-                    }`}
+                  className={`flex items-center gap-4 rounded-xl border px-5 py-3.5 transition-colors ${
+                    bad ? 'border-red-900/60 bg-red-950/40' : 'border-gray-700 bg-gray-800'
+                  }`}
                 >
-                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${bad ? 'bg-red-900/50' : 'bg-gray-700'}`}>
-                    <Icon className={`w-4 h-4 ${bad ? 'text-red-400' : 'text-gray-400'}`} />
+                  <div
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${bad ? 'bg-red-900/50' : 'bg-gray-700'}`}
+                  >
+                    <Icon className={`h-4 w-4 ${bad ? 'text-red-400' : 'text-gray-400'}`} />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className={`text-[13px] font-semibold ${bad ? 'text-red-300' : 'text-gray-200'}`}>{label}</div>
-                    <div className="text-[11px] text-gray-500 mt-0.5">{note}</div>
+                  <div className="min-w-0 flex-1">
+                    <div
+                      className={`text-[13px] font-semibold ${bad ? 'text-red-300' : 'text-gray-200'}`}
+                    >
+                      {label}
+                    </div>
+                    <div className="mt-0.5 text-[11px] text-gray-500">{note}</div>
                   </div>
-                  <div className={`text-[13px] font-black shrink-0 text-right min-w-[120px] ${bad ? 'text-red-400' : cost === '₹0' || cost.includes('₹0 ') ? 'text-green-400' : 'text-gray-300'
-                    }`}>
+                  <div
+                    className={`min-w-[120px] shrink-0 text-right text-[13px] font-black ${
+                      bad
+                        ? 'text-red-400'
+                        : cost === '₹0' || cost.includes('₹0')
+                          ? 'text-green-400'
+                          : 'text-gray-300'
+                    }`}
+                  >
                     {cost}
                   </div>
                 </div>
@@ -814,57 +971,78 @@ function CostSavings({ mode }: { mode: Mode }) {
           </AnimatePresence>
 
           {/* Monthly totals */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-            <div className={`rounded-xl border p-6 transition-all ${activeTeam === 'A' ? 'border-red-800 bg-red-950/50 scale-[1.01]' : 'border-gray-700 bg-gray-800'}`}>
-              <div className="text-[11px] text-gray-500 mb-1 uppercase tracking-widest font-semibold">Team A · per month</div>
-              <div className="text-[2.8rem] font-black text-red-400 leading-none mb-2">
+          <div className="mb-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div
+              className={`rounded-xl border p-6 transition-all ${activeTeam === 'A' ? 'scale-[1.01] border-red-800 bg-red-950/50' : 'border-gray-700 bg-gray-800'}`}
+            >
+              <div className="mb-1 text-[11px] font-semibold tracking-widest text-gray-500 uppercase">
+                Team A · per month
+              </div>
+              <div className="mb-2 text-[2.8rem] leading-none font-black text-red-400">
                 ₹{Math.round(teamAMonthly).toLocaleString('en-IN')}
               </div>
-              <div className="text-[12px] text-red-500 leading-relaxed">
+              <div className="text-[12px] leading-relaxed text-red-500">
                 {`₹${Math.round(teamADaily).toLocaleString('en-IN')}/day × ${WORKING_DAYS} days + tab restarts + member overlap. Identical data paid for, over and over.`}
               </div>
             </div>
-            <div className={`rounded-xl border p-6 transition-all ${activeTeam === 'B' ? 'border-green-800 bg-green-950/30 scale-[1.01]' : 'border-gray-700 bg-gray-800'}`}>
-              <div className="text-[11px] text-gray-500 mb-1 uppercase tracking-widest font-semibold">Team B · per month</div>
-              <div className="text-[2.8rem] font-black text-green-400 leading-none mb-2">
+            <div
+              className={`rounded-xl border p-6 transition-all ${activeTeam === 'B' ? 'scale-[1.01] border-green-800 bg-green-950/30' : 'border-gray-700 bg-gray-800'}`}
+            >
+              <div className="mb-1 text-[11px] font-semibold tracking-widest text-gray-500 uppercase">
+                Team B · per month
+              </div>
+              <div className="mb-2 text-[2.8rem] leading-none font-black text-green-400">
                 ₹{Math.round(teamBMonthly).toLocaleString('en-IN')}
               </div>
-              <div className="text-[12px] text-green-600 leading-relaxed">
-                Only ~15% of searches hit the API (new areas). All numbers: free after first extraction. Cache compounds every week.
+              <div className="text-[12px] leading-relaxed text-green-600">
+                Only ~15% of searches hit the API (new areas). All numbers: free after first
+                extraction. Cache compounds every week.
               </div>
             </div>
           </div>
 
           {/* Savings callout */}
-          <div className="rounded-xl border border-gray-700 bg-gray-800 px-6 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 mb-16">
+          <div className="mb-16 flex flex-col justify-between gap-4 rounded-xl border border-gray-700 bg-gray-800 px-6 py-5 md:flex-row md:items-center">
             <div>
-              <div className="text-[14px] font-semibold text-white mb-0.5">Team B saves every single month</div>
-              <div className="text-[12px] text-gray-500">Same data. Same workflow. Same team size. Permanently lower bill — and it compounds as the cache fills up.</div>
+              <div className="mb-0.5 text-[14px] font-semibold text-white">
+                Team B saves every single month
+              </div>
+              <div className="text-[12px] text-gray-500">
+                Same data. Same workflow. Same team size. Permanently lower bill — and it compounds
+                as the cache fills up.
+              </div>
             </div>
-            <div className="text-right shrink-0">
-              <div className="text-[2.4rem] font-black text-green-400 leading-none">
+            <div className="shrink-0 text-right">
+              <div className="text-[2.4rem] leading-none font-black text-green-400">
                 ₹{Math.round(savedMonthly).toLocaleString('en-IN')}/mo
               </div>
-              <div className="text-[12px] text-green-600 mt-1">
-                {pctSaved}% reduction · ₹{Math.round(savedAnnual).toLocaleString('en-IN')} saved per year
+              <div className="mt-1 text-[12px] text-green-600">
+                {pctSaved}% reduction · ₹{Math.round(savedAnnual).toLocaleString('en-IN')} saved per
+                year
               </div>
             </div>
           </div>
 
           {/* Interactive Calculator */}
-          <div className="border border-gray-700 rounded-2xl p-7 bg-gray-800">
-            <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-2" style={{ color }}>
+          <div className="rounded-2xl border border-gray-700 bg-gray-800 p-7">
+            <p className="mb-2 text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color }}>
               Savings Calculator
             </p>
-            <h3 className="text-[20px] font-black text-white mb-1">Calculate your team's savings</h3>
-            <p className="text-[13px] text-gray-400 mb-8">Adjust the sliders to match your actual workflow. Numbers update in real time.</p>
+            <h3 className="mb-1 text-[20px] font-black text-white">
+              Calculate your team&apos;s savings
+            </h3>
+            <p className="mb-8 text-[13px] text-gray-400">
+              Adjust the sliders to match your actual workflow. Numbers update in real time.
+            </p>
 
             <div className="space-y-6">
               {[
                 {
                   label: 'Team size',
                   id: 'calc-team',
-                  min: 1, max: 50, step: 1,
+                  min: 1,
+                  max: 50,
+                  step: 1,
                   value: calcTeam,
                   display: `${calcTeam} people`,
                   onChange: (v: number) => setCalcTeam(v),
@@ -872,7 +1050,9 @@ function CostSavings({ mode }: { mode: Mode }) {
                 {
                   label: 'Place searches per person per day',
                   id: 'calc-searches',
-                  min: 10, max: 500, step: 10,
+                  min: 10,
+                  max: 500,
+                  step: 10,
                   value: calcSearches,
                   display: `${calcSearches.toLocaleString()} searches`,
                   onChange: (v: number) => setCalcSearches(v),
@@ -880,7 +1060,9 @@ function CostSavings({ mode }: { mode: Mode }) {
                 {
                   label: 'Numbers extracted per day (total team)',
                   id: 'calc-numbers',
-                  min: 0, max: 1000, step: 10,
+                  min: 0,
+                  max: 1000,
+                  step: 10,
                   value: calcNumbers,
                   display: `${calcNumbers.toLocaleString()} numbers`,
                   onChange: (v: number) => setCalcNumbers(v),
@@ -888,15 +1070,19 @@ function CostSavings({ mode }: { mode: Mode }) {
                 {
                   label: 'Cache hit rate (% of searches already in DB)',
                   id: 'calc-cache',
-                  min: 30, max: 98, step: 1,
+                  min: 30,
+                  max: 98,
+                  step: 1,
                   value: calcCache,
                   display: `${calcCache}%`,
                   onChange: (v: number) => setCalcCache(v),
                 },
               ].map(({ label, id, min, max, step, value, display, onChange }) => (
                 <div key={id}>
-                  <div className="flex items-baseline justify-between mb-2">
-                    <label htmlFor={id} className="text-[13px] text-gray-400">{label}</label>
+                  <div className="mb-2 flex items-baseline justify-between">
+                    <label htmlFor={id} className="text-[13px] text-gray-400">
+                      {label}
+                    </label>
                     <span className="text-[15px] font-black text-white">{display}</span>
                   </div>
                   <input
@@ -913,34 +1099,44 @@ function CostSavings({ mode }: { mode: Mode }) {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-              <div className="bg-gray-900 rounded-xl p-4 border border-red-900/40">
-                <div className="text-[11px] text-gray-500 uppercase tracking-widest mb-1">Without PlaceFinder</div>
-                <div className="text-[1.8rem] font-black text-red-400 leading-none">
+            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+              <div className="rounded-xl border border-red-900/40 bg-gray-900 p-4">
+                <div className="mb-1 text-[11px] tracking-widest text-gray-500 uppercase">
+                  Without PlaceFinder
+                </div>
+                <div className="text-[1.8rem] leading-none font-black text-red-400">
                   ₹{Math.round(calcRawMonthly).toLocaleString('en-IN')}
                 </div>
-                <div className="text-[11px] text-gray-600 mt-1">per month</div>
+                <div className="mt-1 text-[11px] text-gray-600">per month</div>
               </div>
-              <div className="bg-gray-900 rounded-xl p-4 border border-green-900/40">
-                <div className="text-[11px] text-gray-500 uppercase tracking-widest mb-1">With PlaceFinder</div>
-                <div className="text-[1.8rem] font-black text-green-400 leading-none">
+              <div className="rounded-xl border border-green-900/40 bg-gray-900 p-4">
+                <div className="mb-1 text-[11px] tracking-widest text-gray-500 uppercase">
+                  With PlaceFinder
+                </div>
+                <div className="text-[1.8rem] leading-none font-black text-green-400">
                   ₹{Math.round(calcPFMonthly).toLocaleString('en-IN')}
                 </div>
-                <div className="text-[11px] text-gray-600 mt-1">per month</div>
+                <div className="mt-1 text-[11px] text-gray-600">per month</div>
               </div>
-              <div className="bg-gray-900 rounded-xl p-4 border border-green-900/40">
-                <div className="text-[11px] text-gray-500 uppercase tracking-widest mb-1">Monthly saving</div>
-                <div className="text-[1.8rem] font-black text-green-400 leading-none">
+              <div className="rounded-xl border border-green-900/40 bg-gray-900 p-4">
+                <div className="mb-1 text-[11px] tracking-widest text-gray-500 uppercase">
+                  Monthly saving
+                </div>
+                <div className="text-[1.8rem] leading-none font-black text-green-400">
                   ₹{Math.round(calcSavedMonthly).toLocaleString('en-IN')}
                 </div>
-                <div className="text-[11px] text-green-700 mt-1">{calcPct}% reduction</div>
+                <div className="mt-1 text-[11px] text-green-700">{calcPct}% reduction</div>
               </div>
             </div>
 
-            <div className="mt-4 rounded-xl border border-green-800 bg-green-950/30 px-5 py-4 flex items-center justify-between flex-wrap gap-3">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-green-800 bg-green-950/30 px-5 py-4">
               <div>
-                <div className="text-[13px] font-semibold text-green-300">Projected annual saving for your team</div>
-                <div className="text-[11px] text-green-700 mt-0.5">At current usage — grows as cache warms up further</div>
+                <div className="text-[13px] font-semibold text-green-300">
+                  Projected annual saving for your team
+                </div>
+                <div className="mt-0.5 text-[11px] text-green-700">
+                  At current usage — grows as cache warms up further
+                </div>
               </div>
               <div className="text-[2rem] font-black text-green-400">
                 ₹{Math.round(calcSavedAnnual).toLocaleString('en-IN')}/year
@@ -957,29 +1153,67 @@ function CostSavings({ mode }: { mode: Mode }) {
 function Metrics({ mode }: { mode: Mode }) {
   const color = accent(mode);
   const metrics = [
-    { Icon: TrendingDown, stat: '₹71K+', label: 'saved per team per year (avg.)', sub: 'For a 6-person team doing 200 searches/day. Scales with your workflow.' },
-    { Icon: Clock, stat: '280ms', label: 'average cache-hit response time', sub: 'vs. 1.4s for a live Google Places API call' },
-    { Icon: Database, stat: '3.2M+', label: 'place records cached in our DB', sub: 'Schools, restaurants, addresses, numbers — growing daily' },
-    { Icon: Phone, stat: '₹0', label: 'cost to re-fetch a cached phone number', sub: 'Extracted once → stored forever per place_id. By anyone on your team.' },
-    { Icon: Users, stat: '1,200+', label: 'active teams across India', sub: 'Ed-tech, hospitality, market research, consulting' },
-    { Icon: BarChart3, stat: '5,000+', label: 'cities & areas indexed', sub: 'Tier 1, 2, and 3 — every state, every union territory' },
+    {
+      Icon: TrendingDown,
+      stat: '₹71K+',
+      label: 'saved per team per year (avg.)',
+      sub: 'For a 6-person team doing 200 searches/day. Scales with your workflow.',
+    },
+    {
+      Icon: Clock,
+      stat: '280ms',
+      label: 'average cache-hit response time',
+      sub: 'vs. 1.4s for a live Google Places API call',
+    },
+    {
+      Icon: Database,
+      stat: '3.2M+',
+      label: 'place records cached in our DB',
+      sub: 'Schools, restaurants, addresses, numbers — growing daily',
+    },
+    {
+      Icon: Phone,
+      stat: '₹0',
+      label: 'cost to re-fetch a cached phone number',
+      sub: 'Extracted once → stored forever per place_id. By anyone on your team.',
+    },
+    {
+      Icon: Users,
+      stat: '1,200+',
+      label: 'active teams across India',
+      sub: 'Ed-tech, hospitality, market research, consulting',
+    },
+    {
+      Icon: BarChart3,
+      stat: '5,000+',
+      label: 'cities & areas indexed',
+      sub: 'Tier 1, 2, and 3 — every state, every union territory',
+    },
   ];
   return (
-    <section className="bg-white py-24 px-6 lg:px-16 border-t border-gray-100">
-      <div className="max-w-6xl mx-auto">
+    <section className="border-t border-gray-100 bg-white px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-6xl">
         <AnimSection className="mb-14">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color }}>Platform Metrics</p>
-          <h2 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-tight max-w-xl">
+          <p className="mb-3 text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color }}>
+            Platform Metrics
+          </p>
+          <h2 className="max-w-xl text-3xl leading-tight font-black tracking-tight text-gray-900 lg:text-4xl">
             Numbers that tell the story.
           </h2>
         </AnimSection>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-gray-100 bg-gray-100 md:grid-cols-2 lg:grid-cols-3">
           {metrics.map(({ Icon, stat, label, sub }, i) => (
-            <AnimSection key={i} delay={i * 0.06} className="bg-white p-8 hover:bg-gray-50 transition-colors">
-              <Icon className="w-5 h-5 text-gray-400 mb-5" />
-              <div className="text-[2.8rem] font-black text-gray-900 tracking-tight leading-none mb-2">{stat}</div>
-              <div className="text-[13px] text-gray-700 font-medium mb-2 leading-snug">{label}</div>
-              <div className="text-[11px] text-gray-400 leading-relaxed">{sub}</div>
+            <AnimSection
+              key={i}
+              delay={i * 0.06}
+              className="bg-white p-8 transition-colors hover:bg-gray-50"
+            >
+              <Icon className="mb-5 h-5 w-5 text-gray-400" />
+              <div className="mb-2 text-[2.8rem] leading-none font-black tracking-tight text-gray-900">
+                {stat}
+              </div>
+              <div className="mb-2 text-[13px] leading-snug font-medium text-gray-700">{label}</div>
+              <div className="text-[11px] leading-relaxed text-gray-400">{sub}</div>
             </AnimSection>
           ))}
         </div>
@@ -1026,35 +1260,45 @@ function HowItWorks({ mode }: { mode: Mode }) {
   ];
 
   return (
-    <section className="bg-gray-50 py-24 px-6 lg:px-16 border-t border-gray-100">
-      <div className="max-w-5xl mx-auto">
+    <section className="border-t border-gray-100 bg-gray-50 px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-5xl">
         <AnimSection className="mb-16">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color }}>
+          <p className="mb-3 text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color }}>
             How It Works
           </p>
-          <h2 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-tight max-w-xl">
+          <h2 className="max-w-xl text-3xl leading-tight font-black tracking-tight text-gray-900 lg:text-4xl">
             Search once. The data stays yours.
           </h2>
-          <p className="text-[15px] text-gray-500 mt-3 max-w-lg">
-            Every interaction writes to our database. Nothing disappears. Nothing gets double-billed.
+          <p className="mt-3 max-w-lg text-[15px] text-gray-500">
+            Every interaction writes to our database. Nothing disappears. Nothing gets
+            double-billed.
           </p>
         </AnimSection>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-5">
           {steps.map(({ Icon, title, time, desc }, i) => (
             <AnimSection key={i} delay={i * 0.08}>
               <div className="relative">
                 {i < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-5 left-[calc(100%+8px)] right-[-8px] h-px bg-gray-200 z-10" />
+                  <div className="absolute top-5 right-[-8px] left-[calc(100%+8px)] z-10 hidden h-px bg-gray-200 md:block" />
                 )}
                 <div
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${i === 0 ? 'text-white' : 'bg-white border border-gray-200 text-gray-500'}`}
-                  style={i === 0 ? { background: `linear-gradient(135deg, ${ORANGE} 0%, ${INDIGO} 100%)` } : {}}
+                  className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl ${i === 0 ? 'text-white' : 'border border-gray-200 bg-white text-gray-500'}`}
+                  style={
+                    i === 0
+                      ? { background: `linear-gradient(135deg, ${ORANGE} 0%, ${INDIGO} 100%)` }
+                      : {}
+                  }
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="h-4 w-4" />
                 </div>
-                <div className="text-[10px] font-bold tracking-widest uppercase mb-1" style={{ color }}>{time}</div>
-                <h3 className="text-[13.5px] font-bold text-gray-900 mb-1.5">{title}</h3>
-                <p className="text-[12px] text-gray-500 leading-relaxed">{desc}</p>
+                <div
+                  className="mb-1 text-[10px] font-bold tracking-widest uppercase"
+                  style={{ color }}
+                >
+                  {time}
+                </div>
+                <h3 className="mb-1.5 text-[13.5px] font-bold text-gray-900">{title}</h3>
+                <p className="text-[12px] leading-relaxed text-gray-500">{desc}</p>
               </div>
             </AnimSection>
           ))}
@@ -1068,34 +1312,68 @@ function HowItWorks({ mode }: { mode: Mode }) {
 function Coverage({ mode }: { mode: Mode }) {
   const color = accent(mode);
   const stateGroups = [
-    { region: 'North', states: ['Delhi', 'Uttar Pradesh', 'Uttarakhand', 'Himachal Pradesh', 'Punjab', 'Haryana', 'J&K', 'Rajasthan'] },
-    { region: 'South', states: ['Karnataka', 'Tamil Nadu', 'Kerala', 'Telangana', 'Andhra Pradesh', 'Goa'] },
+    {
+      region: 'North',
+      states: [
+        'Delhi',
+        'Uttar Pradesh',
+        'Uttarakhand',
+        'Himachal Pradesh',
+        'Punjab',
+        'Haryana',
+        'J&K',
+        'Rajasthan',
+      ],
+    },
+    {
+      region: 'South',
+      states: ['Karnataka', 'Tamil Nadu', 'Kerala', 'Telangana', 'Andhra Pradesh', 'Goa'],
+    },
     { region: 'West', states: ['Maharashtra', 'Gujarat', 'Madhya Pradesh', 'Chhattisgarh'] },
-    { region: 'East', states: ['West Bengal', 'Bihar', 'Jharkhand', 'Odisha', 'Assam', 'Tripura', 'Meghalaya', 'Sikkim'] },
+    {
+      region: 'East',
+      states: [
+        'West Bengal',
+        'Bihar',
+        'Jharkhand',
+        'Odisha',
+        'Assam',
+        'Tripura',
+        'Meghalaya',
+        'Sikkim',
+      ],
+    },
   ];
   return (
-    <section id="coverage" className="bg-white py-24 px-6 lg:px-16 border-t border-gray-100">
-      <div className="max-w-5xl mx-auto">
+    <section id="coverage" className="border-t border-gray-100 bg-white px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-5xl">
         <AnimSection className="mb-14">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color }}>India Coverage</p>
-          <h2 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-tight">
-            Every state. Every city.<br />Every area.
+          <p className="mb-3 text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color }}>
+            India Coverage
+          </p>
+          <h2 className="text-3xl leading-tight font-black tracking-tight text-gray-900 lg:text-4xl">
+            Every state. Every city.
+            <br />
+            Every area.
           </h2>
-          <p className="text-[15px] text-gray-500 mt-3 max-w-md">
-            Search from Srinagar to Kanyakumari. Click on any state card, pick a city, then drill into an area — or just type in the search bar.
+          <p className="mt-3 max-w-md text-[15px] text-gray-500">
+            Search from Srinagar to Kanyakumari. Click on any state card, pick a city, then drill
+            into an area — or just type in the search bar.
           </p>
         </AnimSection>
 
         <AnimSection delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             {stateGroups.map(({ region, states }, i) => (
-              <div key={i} className="border border-gray-200 rounded-2xl p-5">
-                <div className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-3">{region} India</div>
+              <div key={i} className="rounded-2xl border border-gray-200 p-5">
+                <div className="mb-3 text-[10px] font-bold tracking-widest text-gray-400 uppercase">
+                  {region} India
+                </div>
                 <div className="flex flex-wrap gap-1.5">
                   {states.map((s, j) => (
                     <span
                       key={j}
-                      className="text-[10.5px] font-medium px-2 py-0.5 rounded-full border border-gray-200 text-gray-600 hover:border-gray-400 cursor-pointer transition-colors"
+                      className="cursor-pointer rounded-full border border-gray-200 px-2 py-0.5 text-[10.5px] font-medium text-gray-600 transition-colors hover:border-gray-400"
                     >
                       {s}
                     </span>
@@ -1113,9 +1391,12 @@ function Coverage({ mode }: { mode: Mode }) {
               { n: '500+', l: 'Cities covered' },
               { n: '5,000+', l: 'Areas indexed' },
             ].map((s, i) => (
-              <div key={i} className="bg-gray-50 rounded-2xl px-6 py-5 border border-gray-100 text-center">
+              <div
+                key={i}
+                className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-5 text-center"
+              >
                 <div className="text-[2rem] font-black text-gray-900">{s.n}</div>
-                <div className="text-[12px] text-gray-500 mt-1">{s.l}</div>
+                <div className="mt-1 text-[12px] text-gray-500">{s.l}</div>
               </div>
             ))}
           </div>
@@ -1129,50 +1410,100 @@ function Coverage({ mode }: { mode: Mode }) {
 function Comparison({ mode }: { mode: Mode }) {
   const color = accent(mode);
   const rows = [
-    { feature: 'Phone number extraction', raw: 'Manual — open Google Maps per place', us: 'One click per card, auto-saved to DB' },
-    { feature: 'Data persistence', raw: 'Lost on tab close or network drop', us: 'Cached to DB immediately, always available' },
-    { feature: 'API cost on re-search', raw: 'Full cost every single time', us: '₹0 — served from our database' },
-    { feature: 'Excel export', raw: 'Manual copy-paste into sheets', us: 'One-click .xlsx with all columns' },
-    { feature: 'India coverage', raw: 'Requires custom query per area', us: '5,000+ areas pre-indexed, searchable' },
-    { feature: 'Team usage', raw: 'Each user pays API costs independently', us: 'Shared cache — team benefits from every search' },
-    { feature: 'Mode switching', raw: 'Separate queries for each category', us: 'Single toggle between restaurants and schools' },
-    { feature: 'Monthly cost (6-person team)', raw: '₹6,919/mo and rising', us: '₹965/mo — drops further as cache matures' },
-    { feature: 'Annual cost at team scale', raw: '₹83,028/year', us: '₹11,580/year — ₹71,448 saved annually' },
+    {
+      feature: 'Phone number extraction',
+      raw: 'Manual — open Google Maps per place',
+      us: 'One click per card, auto-saved to DB',
+    },
+    {
+      feature: 'Data persistence',
+      raw: 'Lost on tab close or network drop',
+      us: 'Cached to DB immediately, always available',
+    },
+    {
+      feature: 'API cost on re-search',
+      raw: 'Full cost every single time',
+      us: '₹0 — served from our database',
+    },
+    {
+      feature: 'Excel export',
+      raw: 'Manual copy-paste into sheets',
+      us: 'One-click .xlsx with all columns',
+    },
+    {
+      feature: 'India coverage',
+      raw: 'Requires custom query per area',
+      us: '5,000+ areas pre-indexed, searchable',
+    },
+    {
+      feature: 'Team usage',
+      raw: 'Each user pays API costs independently',
+      us: 'Shared cache — team benefits from every search',
+    },
+    {
+      feature: 'Mode switching',
+      raw: 'Separate queries for each category',
+      us: 'Single toggle between restaurants and schools',
+    },
+    {
+      feature: 'Monthly cost (6-person team)',
+      raw: '₹6,919/mo and rising',
+      us: '₹965/mo — drops further as cache matures',
+    },
+    {
+      feature: 'Annual cost at team scale',
+      raw: '₹83,028/year',
+      us: '₹11,580/year — ₹71,448 saved annually',
+    },
   ];
   return (
-    <section className="bg-gray-50 py-24 px-6 lg:px-16 border-t border-gray-100">
-      <div className="max-w-5xl mx-auto">
+    <section className="border-t border-gray-100 bg-gray-50 px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-5xl">
         <AnimSection className="mb-14">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color }}>
+          <p className="mb-3 text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color }}>
             vs Raw Google Places API
           </p>
-          <h2 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight leading-tight">
-            Google API is powerful.<br />But it charges you every time.
+          <h2 className="text-3xl leading-tight font-black tracking-tight text-gray-900 lg:text-4xl">
+            Google API is powerful.
+            <br />
+            But it charges you every time.
           </h2>
-          <p className="text-[15px] text-gray-500 mt-3 max-w-md">
-            PlaceFinder is the intelligent layer on top — so you get the data without the recurring cost.
+          <p className="mt-3 max-w-md text-[15px] text-gray-500">
+            PlaceFinder is the intelligent layer on top — so you get the data without the recurring
+            cost.
           </p>
         </AnimSection>
         <AnimSection delay={0.1}>
-          <div className="overflow-hidden border border-gray-200 rounded-2xl">
+          <div className="overflow-hidden rounded-2xl border border-gray-200">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="text-left px-5 py-3.5 text-[11px] font-semibold text-gray-400 uppercase tracking-widest bg-gray-50 w-[30%]">Feature</th>
-                  <th className="text-left px-5 py-3.5 text-[11px] font-semibold uppercase tracking-widest bg-red-50 text-red-400 w-[35%]">
-                    <span className="flex items-center gap-1.5"><XCircle className="w-3.5 h-3.5" />Raw API / Manual</span>
+                  <th className="w-[30%] bg-gray-50 px-5 py-3.5 text-left text-[11px] font-semibold tracking-widest text-gray-400 uppercase">
+                    Feature
                   </th>
-                  <th className="text-left px-5 py-3.5 text-[11px] font-semibold uppercase tracking-widest bg-green-50 text-green-600 w-[35%]">
-                    <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5" />PlaceFinder</span>
+                  <th className="w-[35%] bg-red-50 px-5 py-3.5 text-left text-[11px] font-semibold tracking-widest text-red-400 uppercase">
+                    <span className="flex items-center gap-1.5">
+                      <XCircle className="h-3.5 w-3.5" />
+                      Raw API / Manual
+                    </span>
+                  </th>
+                  <th className="w-[35%] bg-green-50 px-5 py-3.5 text-left text-[11px] font-semibold tracking-widest text-green-600 uppercase">
+                    <span className="flex items-center gap-1.5">
+                      <CheckCircle2 className="h-3.5 w-3.5" />
+                      PlaceFinder
+                    </span>
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {rows.map((r, i) => (
-                  <tr key={i} className={`border-b border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
+                  <tr
+                    key={i}
+                    className={`border-b border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}
+                  >
                     <td className="px-5 py-3 text-[13px] font-medium text-gray-700">{r.feature}</td>
                     <td className="px-5 py-3 text-[13px] text-red-600">{r.raw}</td>
-                    <td className="px-5 py-3 text-[13px] text-gray-900 font-medium">{r.us}</td>
+                    <td className="px-5 py-3 text-[13px] font-medium text-gray-900">{r.us}</td>
                   </tr>
                 ))}
               </tbody>
@@ -1214,7 +1545,7 @@ const USE_CASES = [
     Icon: Layers,
     title: 'Franchise & Expansion Teams',
     stat: 'Competitive mapping',
-    desc: 'Map the restaurant or school density in any area before opening a new branch. Understand who\'s already there, their ratings, and how to position.',
+    desc: "Map the restaurant or school density in any area before opening a new branch. Understand who's already there, their ratings, and how to position.",
   },
   {
     Icon: ShieldCheck,
@@ -1227,24 +1558,30 @@ const USE_CASES = [
 function UseCases({ mode }: { mode: Mode }) {
   const color = accent(mode);
   return (
-    <section className="bg-white py-24 px-6 lg:px-16 border-t border-gray-100">
-      <div className="max-w-6xl mx-auto">
+    <section className="border-t border-gray-100 bg-white px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-6xl">
         <AnimSection className="mb-14">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color }}>Who It&apos;s For</p>
-          <h2 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight">Every team that needs Indian place data.</h2>
+          <p className="mb-3 text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color }}>
+            Who It&apos;s For
+          </p>
+          <h2 className="text-3xl font-black tracking-tight text-gray-900 lg:text-4xl">
+            Every team that needs Indian place data.
+          </h2>
         </AnimSection>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {USE_CASES.map(({ Icon, title, stat, desc }, i) => (
             <AnimSection key={i} delay={i * 0.05}>
-              <div className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-gray-400 transition-colors h-full flex flex-col">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-gray-100">
-                    <Icon className="w-4 h-4 text-gray-700" />
+              <div className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-gray-400">
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100">
+                    <Icon className="h-4 w-4 text-gray-700" />
                   </div>
-                  <span className="text-[11px] font-semibold text-gray-500 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-0.5">{stat}</span>
+                  <span className="rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-[11px] font-semibold text-gray-500">
+                    {stat}
+                  </span>
                 </div>
-                <h3 className="text-[14px] font-bold text-gray-900 mb-2">{title}</h3>
-                <p className="text-[12.5px] text-gray-500 leading-relaxed">{desc}</p>
+                <h3 className="mb-2 text-[14px] font-bold text-gray-900">{title}</h3>
+                <p className="text-[12.5px] leading-relaxed text-gray-500">{desc}</p>
               </div>
             </AnimSection>
           ))}
@@ -1259,7 +1596,7 @@ function Testimonials({ mode }: { mode: Mode }) {
   const color = accent(mode);
   const quotes = [
     {
-      q: "We used to spend 3 hours manually finding school numbers in Delhi NCR. PlaceFinder gets us 40 schools with verified numbers in under 10 minutes.",
+      q: 'We used to spend 3 hours manually finding school numbers in Delhi NCR. PlaceFinder gets us 40 schools with verified numbers in under 10 minutes.',
       name: 'Meera Joshi',
       role: 'Senior Counsellor, EduPath Consulting',
       city: 'Noida',
@@ -1281,30 +1618,38 @@ function Testimonials({ mode }: { mode: Mode }) {
     },
   ];
   return (
-    <section className="bg-gray-50 py-24 px-6 lg:px-16 border-t border-gray-100">
-      <div className="max-w-5xl mx-auto">
+    <section className="border-t border-gray-100 bg-gray-50 px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-5xl">
         <AnimSection className="mb-14">
-          <h2 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight">
+          <h2 className="text-3xl font-black tracking-tight text-gray-900 lg:text-4xl">
             Teams across India trust PlaceFinder.
           </h2>
-          <p className="text-[14px] text-gray-400 mt-2">1,200+ users. Real savings. Real workflows.</p>
+          <p className="mt-2 text-[14px] text-gray-400">
+            1,200+ users. Real savings. Real workflows.
+          </p>
         </AnimSection>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {quotes.map((t, i) => (
             <AnimSection key={i} delay={i * 0.08}>
-              <div className="bg-white border border-gray-200 rounded-2xl p-7 h-full flex flex-col">
-                <div className="flex items-center justify-between mb-5">
+              <div className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-7">
+                <div className="mb-5 flex items-center justify-between">
                   <div className="flex gap-0.5">
                     {[...Array(5)].map((_, j) => (
-                      <Star key={j} className="w-3 h-3 fill-gray-900 text-gray-900" />
+                      <Star key={j} className="h-3 w-3 fill-gray-900 text-gray-900" />
                     ))}
                   </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border border-gray-200 text-gray-500">{t.saving}</span>
+                  <span className="rounded-full border border-gray-200 px-2 py-0.5 text-[10px] font-bold text-gray-500">
+                    {t.saving}
+                  </span>
                 </div>
-                <p className="text-[13px] text-gray-700 leading-relaxed mb-6 flex-1">&quot;{t.q}&quot;</p>
+                <p className="mb-6 flex-1 text-[13px] leading-relaxed text-gray-700">
+                  &quot;{t.q}&quot;
+                </p>
                 <div className="border-t border-gray-100 pt-4">
                   <p className="text-[12.5px] font-bold text-gray-900">{t.name}</p>
-                  <p className="text-[11px] text-gray-400 mt-0.5">{t.role} · {t.city}</p>
+                  <p className="mt-0.5 text-[11px] text-gray-400">
+                    {t.role} · {t.city}
+                  </p>
                 </div>
               </div>
             </AnimSection>
@@ -1323,7 +1668,7 @@ const FAQS = [
   },
   {
     q: 'What happens if I close the tab mid-session?',
-    a: "Nothing is lost. Because we write to our DB on every API call — not just when you explicitly save — your results and extracted numbers persist. Reopen the app, search the same area, and everything is there instantly, served from cache at zero API cost.",
+    a: 'Nothing is lost. Because we write to our DB on every API call — not just when you explicitly save — your results and extracted numbers persist. Reopen the app, search the same area, and everything is there instantly, served from cache at zero API cost.',
   },
   {
     q: 'Do I pay per search or per number extracted?',
@@ -1347,7 +1692,7 @@ const FAQS = [
   },
   {
     q: 'How much does a 6-person team actually save per year?',
-    a: 'Based on a team doing 200 searches per person per day and extracting 150 numbers daily, the raw Google API cost comes to roughly ₹6,919/month (₹83,028/year). With PlaceFinder\'s shared cache, that drops to around ₹965/month (₹11,580/year) — a saving of ₹71,448 annually. Use the calculator in the Cost Savings section to model your exact workflow.',
+    a: "Based on a team doing 200 searches per person per day and extracting 150 numbers daily, the raw Google API cost comes to roughly ₹6,919/month (₹83,028/year). With PlaceFinder's shared cache, that drops to around ₹965/month (₹11,580/year) — a saving of ₹71,448 annually. Use the calculator in the Cost Savings section to model your exact workflow.",
   },
 ];
 
@@ -1355,10 +1700,12 @@ function FAQ({ mode }: { mode: Mode }) {
   const color = accent(mode);
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section id="faq" className="bg-white py-24 px-6 lg:px-16 border-t border-gray-100">
-      <div className="max-w-2xl mx-auto">
+    <section id="faq" className="border-t border-gray-100 bg-white px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-2xl">
         <AnimSection className="mb-12">
-          <h2 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight">Frequently asked questions.</h2>
+          <h2 className="text-3xl font-black tracking-tight text-gray-900 lg:text-4xl">
+            Frequently asked questions.
+          </h2>
         </AnimSection>
         <div className="flex flex-col">
           {FAQS.map((f, i) => (
@@ -1366,10 +1713,14 @@ function FAQ({ mode }: { mode: Mode }) {
               <div className="border-b border-gray-200">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full text-left py-5 flex justify-between items-center gap-4 group"
+                  className="group flex w-full items-center justify-between gap-4 py-5 text-left"
                 >
-                  <span className="text-[14px] font-semibold text-gray-900 leading-snug group-hover:text-gray-600 transition-colors">{f.q}</span>
-                  <ChevronDown className={`w-4 h-4 text-gray-400 shrink-0 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`} />
+                  <span className="text-[14px] leading-snug font-semibold text-gray-900 transition-colors group-hover:text-gray-600">
+                    {f.q}
+                  </span>
+                  <ChevronDown
+                    className={`h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`}
+                  />
                 </button>
                 <AnimatePresence>
                   {open === i && (
@@ -1380,7 +1731,7 @@ function FAQ({ mode }: { mode: Mode }) {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-[13.5px] text-gray-500 leading-relaxed pb-5">{f.a}</p>
+                      <p className="pb-5 text-[13.5px] leading-relaxed text-gray-500">{f.a}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -1396,10 +1747,10 @@ function FAQ({ mode }: { mode: Mode }) {
 // ─── CTA ──────────────────────────────────────────────────────────────────────
 function CTA({ isLoggedIn }: Readonly<{ isLoggedIn: boolean }>) {
   return (
-    <section className="bg-gray-900 py-24 px-6 lg:px-16">
-      <div className="max-w-2xl mx-auto text-center">
+    <section className="bg-gray-900 px-6 py-24 lg:px-16">
+      <div className="mx-auto max-w-2xl text-center">
         <AnimSection>
-          <div className="flex justify-center mb-6">
+          <div className="mb-6 flex justify-center">
             <div className="flex h-12 w-24 overflow-hidden rounded-2xl shadow-lg">
               <div className="flex w-11 items-center justify-center bg-orange-600">
                 <UtensilsCrossed size={18} className="text-white" />
@@ -1410,29 +1761,38 @@ function CTA({ isLoggedIn }: Readonly<{ isLoggedIn: boolean }>) {
               </div>
             </div>
           </div>
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-5" style={{ color: ORANGE }}>
+          <p
+            className="mb-5 text-[10px] font-bold tracking-[0.2em] uppercase"
+            style={{ color: ORANGE }}
+          >
             Start for free · No credit card required
           </p>
-          <h2 className="text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5">
+          <h2 className="mb-5 text-4xl leading-tight font-black tracking-tight text-white lg:text-5xl">
             Find any place in India.
             <br />
             Pay for it once.
           </h2>
-          <p className="text-[15px] text-gray-400 leading-relaxed mb-10 max-w-lg mx-auto">
-            Join 1,200+ teams using PlaceFinder to discover restaurants and schools across India — with caching that saves the average 6-person team ₹71,000+ a year.
+          <p className="mx-auto mb-10 max-w-lg text-[15px] leading-relaxed text-gray-400">
+            Join 1,200+ teams using PlaceFinder to discover restaurants and schools across India —
+            with caching that saves the average 6-person team ₹71,000+ a year.
           </p>
           <a
             href={isLoggedIn ? '/finder' : '/login'}
-            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2.5 rounded-xl px-8 py-4 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
             style={{ background: `linear-gradient(135deg, ${ORANGE} 0%, ${INDIGO} 100%)` }}
           >
             {isLoggedIn ? 'Go to Dashboard' : 'Get Started Free'}
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="h-5 w-5" />
           </a>
-          <div className="flex items-center justify-center gap-6 mt-8 text-[12px] text-gray-600 flex-wrap">
-            {['Free to start', 'No credit card', '86% avg. API cost saved', '1,200+ teams trust us'].map((l, i) => (
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-[12px] text-gray-600">
+            {[
+              'Free to start',
+              'No credit card',
+              '86% avg. API cost saved',
+              '1,200+ teams trust us',
+            ].map((l, i) => (
               <span key={i} className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3 h-3 text-gray-600" />
+                <CheckCircle2 className="h-3 w-3 text-gray-600" />
                 {l}
               </span>
             ))}
@@ -1446,8 +1806,8 @@ function CTA({ isLoggedIn }: Readonly<{ isLoggedIn: boolean }>) {
 // ─── Footer ───────────────────────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-100 py-8 px-6 lg:px-16">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer className="border-t border-gray-100 bg-white px-6 py-8 lg:px-16">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">
         <div className="flex items-center gap-2">
           <div className="flex h-6 w-12 overflow-hidden rounded-md shadow-sm">
             <div className="flex w-5 items-center justify-center bg-orange-600">
@@ -1458,14 +1818,22 @@ function Footer() {
               <GraduationCap size={10} className="text-white" />
             </div>
           </div>
-          <span className="font-bold text-[14px] text-gray-900">PlaceFinder</span>
+          <span className="text-[14px] font-bold text-gray-900">PlaceFinder</span>
         </div>
         <div className="flex gap-6">
           {['Privacy Policy', 'Terms of Use', 'Contact'].map((l, i) => (
-            <a key={i} href="#" className="text-[12px] text-gray-400 hover:text-gray-700 transition-colors">{l}</a>
+            <a
+              key={i}
+              href="#"
+              className="text-[12px] text-gray-400 transition-colors hover:text-gray-700"
+            >
+              {l}
+            </a>
           ))}
         </div>
-        <p className="text-[12px] text-gray-300">© 2024 Quantumtech Digital. All rights reserved.</p>
+        <p className="text-[12px] text-gray-300">
+          © 2024 Quantumtech Digital. All rights reserved.
+        </p>
       </div>
     </footer>
   );
