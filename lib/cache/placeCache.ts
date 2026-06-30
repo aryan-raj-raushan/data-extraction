@@ -1,18 +1,38 @@
 // lib/cache/placeCache.ts
 //
-// Replaces the old file-based restaurantCache.ts
 // Collection: "place_cache"
-// Document shape:
-//   { _id, cacheKey, mode, data: Place[], cachedAt: number, updatedAt: Date }
+// Document shape now tracks PROGRESSIVE fetch state, not just a final array,
+// since results accumulate page-by-page across multiple user requests:
+//   {
+//     _id, cacheKey, mode,
+//     queries: string[],        // ordered phrasings to try (see buildQueries)
+//     activeQueryIndex: number, // which query we're currently paging through
+//     nextPageToken?: string,   // token to fetch the NEXT page of activeQuery
+//     data: Place[],            // all unique places collected so far, in order
+//     exhausted: boolean,       // true once no query/page has anything left
+//     cachedAt: number, updatedAt: Date,
+//   }
 //
-// TTL: 7 days — enforced in application logic (MongoDB TTL index optional).
+// TTL: 7 days — enforced in application logic.
 
 import { connectToDatabase } from '@/lib/db/mongodb';
+import type { LegacyPlace } from '@/lib/places/fetchPlaces';
 
 const COLLECTION = 'place_cache';
 const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 export type PlaceMode = 'restaurant' | 'school';
+
+export interface PlaceCacheDoc {
+  cacheKey: string;
+  mode: PlaceMode;
+  queries: string[];
+  activeQueryIndex: number;
+  nextPageToken?: string;
+  data: LegacyPlace[];
+  exhausted: boolean;
+  cachedAt: number;
+}
 
 function buildCacheKey(area: string, mode: PlaceMode) {
   return `${mode}::${area.toLowerCase().trim().replace(/\s+/g, '-')}`;
@@ -20,11 +40,10 @@ function buildCacheKey(area: string, mode: PlaceMode) {
 
 // ── read ──────────────────────────────────────────────────────────────────────
 
-export async function readPlaceCache(
+export async function readPlaceCacheDoc(
   area: string,
   mode: PlaceMode,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): Promise<any[] | null> {
+): Promise<PlaceCacheDoc | null> {
   try {
     const { db } = await connectToDatabase();
     const key = buildCacheKey(area, mode);
@@ -32,50 +51,49 @@ export async function readPlaceCache(
 
     if (!doc) return null;
 
-    // Evict stale cache
     if (Date.now() - doc.cachedAt > CACHE_TTL_MS) {
       await db.collection(COLLECTION).deleteOne({ cacheKey: key });
       console.log(`[🗑️ placeCache] Stale cache deleted for "${key}"`);
       return null;
     }
 
-    console.log(`[✅ placeCache] Cache HIT for "${key}" (${doc.data.length} items)`);
-    return doc.data;
+    console.log(
+      `[✅ placeCache] Cache HIT for "${key}" (${doc.data.length} items so far, exhausted=${doc.exhausted})`,
+    );
+    return doc as unknown as PlaceCacheDoc;
   } catch (err) {
     console.error('[placeCache] read error:', (err as Error).message);
     return null;
   }
 }
 
-// ── write ─────────────────────────────────────────────────────────────────────
+// ── write (upsert the full progressive state) ────────────────────────────────
 
-export async function writePlaceCache(
-  area: string,
-  mode: PlaceMode,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any[],
-): Promise<void> {
+export async function writePlaceCacheDoc(area: string, doc: PlaceCacheDoc): Promise<void> {
   try {
     const { db } = await connectToDatabase();
-    const key = buildCacheKey(area, mode);
-
-    // Deduplicate by place_id
-    const unique = Array.from(new Map(data.map((r) => [r.place_id, r])).values());
+    const key = buildCacheKey(area, doc.mode);
 
     await db.collection(COLLECTION).updateOne(
       { cacheKey: key },
       {
         $set: {
           cacheKey: key,
-          mode,
-          data: unique,
-          cachedAt: Date.now(),
+          mode: doc.mode,
+          queries: doc.queries,
+          activeQueryIndex: doc.activeQueryIndex,
+          nextPageToken: doc.nextPageToken ?? null,
+          data: doc.data,
+          exhausted: doc.exhausted,
+          cachedAt: doc.cachedAt,
           updatedAt: new Date(),
         },
       },
       { upsert: true },
     );
-    console.log(`[✅ placeCache] Wrote ${unique.length} items for "${key}"`);
+    console.log(
+      `[✅ placeCache] Wrote ${doc.data.length} items for "${key}" (exhausted=${doc.exhausted})`,
+    );
   } catch (err) {
     console.error('[placeCache] write error:', (err as Error).message);
   }
@@ -93,7 +111,6 @@ export async function patchPlacePhone(
     const { db } = await connectToDatabase();
     const key = buildCacheKey(area, mode);
 
-    // Update the phone field of the matching element inside the data array
     await db.collection(COLLECTION).updateOne(
       { cacheKey: key, 'data.place_id': placeId },
       {

@@ -2,17 +2,18 @@
 //
 // GET /api/places?area=...&city=...&state=...&mode=restaurant|school&page=1&pageSize=20
 //
-// On first call for a given area/mode, getPlaces() fetches up to ~100 results
-// from Google (looping next_page_token) and stores ALL of them in Mongo.
-// Every call — including this one — then just slices that stored array.
-// So page 2, 3, 4... never touch Google again; they're instant DB reads.
+// Each call fetches only as many Google pages as needed to satisfy `page`,
+// picking up from wherever the cached doc left off. Page 1 of a brand-new
+// area hits Google once; clicking to page 2 hits Google once more (or zero
+// times if that data already happens to be cached); revisiting any earlier
+// page is a pure DB read.
 
 import { NextRequest, NextResponse } from 'next/server';
-import { getPlaces } from '@/lib/places/placeService';
+import { getPlacesPage } from '@/lib/places/placeService';
 import type { PlaceMode } from '@/lib/cache/placeCache';
 
 const DEFAULT_PAGE_SIZE = 20;
-const MAX_PAGE_SIZE = 50;
+const MAX_PAGE_SIZE = 100;
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
@@ -39,27 +40,8 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // Full set (up to ~100), fetched from Google only on cache miss.
-    const allPlaces = await getPlaces(area, city, state, mode);
-
-    const totalCount = allPlaces.length;
-    const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
-    const safePage = Math.min(page, totalPages);
-
-    const start = (safePage - 1) * pageSize;
-    const places = allPlaces.slice(start, start + pageSize);
-
-    return NextResponse.json({
-      places,
-      pagination: {
-        page: safePage,
-        pageSize,
-        totalCount,
-        totalPages,
-        hasNextPage: safePage < totalPages,
-        hasPrevPage: safePage > 1,
-      },
-    });
+    const { places, pagination } = await getPlacesPage(area, city, state, mode, page, pageSize);
+    return NextResponse.json({ places, pagination });
   } catch (err) {
     console.error('[/api/places] error:', err);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

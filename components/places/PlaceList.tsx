@@ -164,18 +164,30 @@ function buildPageNumbers(current: number, total: number): (number | '…')[] {
 function Pager({
   pagination,
   onPageChange,
+  fetchingMore,
 }: {
   pagination: Pagination;
   onPageChange: (page: number) => void;
+  fetchingMore: boolean;
 }) {
   const { page, totalPages, hasNextPage, hasPrevPage } = pagination;
-  if (totalPages <= 1) return null;
+  // Don't gate on totalPages alone: with incremental fetching, totalPages
+  // reflects only what's been fetched SO FAR, not what's actually available.
+  // hasNextPage tells us there's more to fetch even if totalPages is still 1.
+  if (totalPages <= 1 && !hasNextPage && !hasPrevPage) return null;
+
+  // At the "frontier" — the last page we've fetched, with more available —
+  // show an explicit, labeled button instead of a bare chevron, so it's
+  // obvious this click goes and gets new data rather than just flipping
+  // through what's already loaded.
+  const atFrontier = page === totalPages && hasNextPage;
 
   return (
     <div className="mt-6 flex items-center justify-center gap-1.5">
       <PageButton onClick={() => onPageChange(page - 1)} disabled={!hasPrevPage}>
         <ChevronLeft size={14} />
       </PageButton>
+
       {buildPageNumbers(page, totalPages).map((p, i) =>
         p === '…' ? (
           <span key={`ellipsis-${i}`} className="px-1 text-[12px] text-gray-300">
@@ -187,9 +199,30 @@ function Pager({
           </PageButton>
         ),
       )}
-      <PageButton onClick={() => onPageChange(page + 1)} disabled={!hasNextPage}>
-        <ChevronRight size={14} />
-      </PageButton>
+
+      {atFrontier ? (
+        <button
+          onClick={() => onPageChange(page + 1)}
+          disabled={fetchingMore}
+          className="ml-1 flex h-7 items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-3 text-[12px] font-semibold text-gray-700 shadow-sm transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {fetchingMore ? (
+            <>
+              <Loader2 size={12} className="animate-spin" />
+              Fetching…
+            </>
+          ) : (
+            <>
+              Fetch more
+              <ChevronRight size={12} />
+            </>
+          )}
+        </button>
+      ) : (
+        <PageButton onClick={() => onPageChange(page + 1)} disabled={!hasNextPage}>
+          <ChevronRight size={14} />
+        </PageButton>
+      )}
     </div>
   );
 }
@@ -276,7 +309,12 @@ export default function PlaceList({ area, city, state, mode, onLoadingChange }: 
 
   function handlePageChange(newPage: number) {
     if (!pagination) return;
-    const clamped = Math.min(Math.max(newPage, 1), pagination.totalPages);
+    // Upper bound: if there's more to fetch, allow going ONE page past what
+    // we currently know about (that's what triggers the next incremental
+    // fetch). Previously this clamped to pagination.totalPages unconditionally,
+    // which silently blocked "next" whenever totalPages hadn't grown yet.
+    const upperBound = pagination.hasNextPage ? pagination.totalPages + 1 : pagination.totalPages;
+    const clamped = Math.min(Math.max(newPage, 1), upperBound);
     if (clamped === page) return;
     setPage(clamped);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -333,8 +371,12 @@ export default function PlaceList({ area, city, state, mode, onLoadingChange }: 
             <>
               Showing {(pagination.page - 1) * pagination.pageSize + 1}–
               {Math.min(pagination.page * pagination.pageSize, pagination.totalCount)} of{' '}
-              {pagination.totalCount} {label} in{' '}
-              <span className="font-medium text-gray-600">{area}</span>
+              {pagination.totalCount}
+              {pagination.hasNextPage && pagination.page === pagination.totalPages ? '+' : ''}{' '}
+              {label} in <span className="font-medium text-gray-600">{area}</span>
+              {pagination.hasNextPage && pagination.page === pagination.totalPages && (
+                <span className="ml-1 text-gray-400">— more available, click Fetch more below</span>
+              )}
             </>
           ) : (
             <>
@@ -377,7 +419,9 @@ export default function PlaceList({ area, city, state, mode, onLoadingChange }: 
         ))}
       </div>
 
-      {pagination && <Pager pagination={pagination} onPageChange={handlePageChange} />}
+      {pagination && (
+        <Pager pagination={pagination} onPageChange={handlePageChange} fetchingMore={loading} />
+      )}
     </div>
   );
 }
