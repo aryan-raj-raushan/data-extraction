@@ -57,8 +57,9 @@ async function loadXLSX(): Promise<any> {
   });
 }
 
-function formatRow(p: Place, mode: PlaceMode) {
+function formatRow(p: Place, mode: PlaceMode, index: number) {
   const base = {
+    'S. No.': index + 1,
     Name: p.name,
     Address: p.formatted_address ?? '',
     'Contact Number': p.formatted_phone_number ?? '',
@@ -93,10 +94,11 @@ async function exportToExcel(
   const places: Place[] = data.places ?? [];
 
   const XLSX = await loadXLSX();
-  const rows = places.map((p) => formatRow(p, mode));
+  const rows = places.map((p, i) => formatRow(p, mode, i));
   const ws = XLSX.utils.json_to_sheet(rows);
 
   ws['!cols'] = [
+    { wch: 6 }, // S. No.
     { wch: 36 }, // Name
     { wch: 50 }, // Address
     { wch: 18 }, // Contact
@@ -403,7 +405,7 @@ export default function PlaceList({ area, city, state, mode, onLoadingChange }: 
 
       {/* Grid */}
       <div
-        className={`grid grid-cols-1 gap-3 transition-opacity sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${
+        className={`grid grid-cols-1 gap-3 transition-opacity sm:grid-cols-2 lg:grid-cols-3 ${
           loading ? 'opacity-50' : 'opacity-100'
         }`}
       >
