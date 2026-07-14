@@ -349,6 +349,16 @@ function Navbar({
               {label}
             </a>
           ))}
+
+          {mode === 'school' && (
+            <a
+              href="/school-data"
+              className="px-3 py-1.5 text-[13px] font-semibold transition-colors"
+              style={{ color: INDIGO }}
+            >
+              School Data
+            </a>
+          )}
           <div className="mr-3 ml-4">
             <ModeToggle mode={mode} onChange={setMode} size="sm" />
           </div>
