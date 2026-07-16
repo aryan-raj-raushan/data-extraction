@@ -1,25 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-import {
-  SCHOOL_DB_NAME,
-  SCHOOL_COLLECTION,
-  DEFAULT_PAGE_SIZE,
-  MAX_PAGE_SIZE,
-} from '@/lib/school/school';
-import { connectToDatabase } from '@/lib/db/schoolMongoDb';
-
-// Escapes regex special characters so user input can't break the query
-// (or be used for a ReDoS-style pattern).
-function escapeRegex(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
+import { getSchoolPool } from '@/lib/db/schoolMysqlDb';
+import { DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE } from '@/lib/school/school';
+import type { RowDataPacket } from 'mysql2';
 
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
 
     const state = searchParams.get('state')?.trim();
-    const district = searchParams.get('district')?.trim(); // "city" filter
+    const district = searchParams.get('district')?.trim();
     const block = searchParams.get('block')?.trim();
     const search = searchParams.get('search')?.trim();
 
@@ -29,30 +18,48 @@ export async function GET(req: NextRequest) {
       Math.max(1, parseInt(searchParams.get('limit') || String(DEFAULT_PAGE_SIZE), 10)),
     );
 
-    const { db } = await connectToDatabase(SCHOOL_DB_NAME);
-    const collection = db.collection(SCHOOL_COLLECTION);
+    const pool = getSchoolPool();
 
-    // Case-insensitive, whitespace-tolerant matches — your sample doc has
-    // fields like school_status: " 0-Operational" with stray whitespace,
-    // so exact equality would silently drop matches.
-    const filter: Record<string, unknown> = {};
-    if (state) filter.state = { $regex: `^\\s*${escapeRegex(state)}\\s*$`, $options: 'i' };
-    if (district) filter.district = { $regex: `^\\s*${escapeRegex(district)}\\s*$`, $options: 'i' };
-    if (block) filter.block = { $regex: `^\\s*${escapeRegex(block)}\\s*$`, $options: 'i' };
-    if (search) filter.school_name = { $regex: escapeRegex(search), $options: 'i' };
+    const conditions: string[] = [];
+    const params: (string | number)[] = [];
 
-    const [data, total] = await Promise.all([
-      collection
-        .find(filter)
-        .sort({ state: 1, district: 1, school_name: 1 })
-        .skip((page - 1) * limit)
-        .limit(limit)
-        .toArray(),
-      collection.countDocuments(filter),
-    ]);
+    if (state) {
+      conditions.push('state = ?');
+      params.push(state);
+    }
+    if (district) {
+      conditions.push('district = ?');
+      params.push(district);
+    }
+    if (block) {
+      conditions.push('block = ?');
+      params.push(block);
+    }
+    if (search) {
+      conditions.push('school_name LIKE ?');
+      params.push(`%${search}%`);
+    }
+
+    const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
+
+    const [rows] = await pool.query<RowDataPacket[]>(
+      `SELECT id AS _id, udise_code, school_name, state, district, block, village, cluster,
+              location, state_mgmt, national_mgmt, school_category, school_type, school_status
+       FROM schools
+       ${where}
+       ORDER BY state, district, school_name
+       LIMIT ? OFFSET ?`,
+      [...params, limit, (page - 1) * limit],
+    );
+
+    const [countRows] = await pool.query<RowDataPacket[]>(
+      `SELECT COUNT(*) as total FROM schools ${where}`,
+      params,
+    );
+    const total = Number(countRows[0]?.total ?? 0);
 
     return NextResponse.json({
-      data,
+      data: rows,
       total,
       page,
       limit,

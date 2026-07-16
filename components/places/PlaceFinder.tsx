@@ -20,12 +20,14 @@ import {
   GraduationCap,
   LogOut,
   Loader2,
+  Database,
 } from 'lucide-react';
 import locations from '@/constants/json/cities.json';
 import statesRaw from '@/constants/json/states.json';
 import PlaceList from './PlaceList';
 import { signOut } from 'next-auth/react';
 import type { PlaceMode } from '@/lib/cache/placeCache';
+import Link from 'next/link';
 
 // ── types ─────────────────────────────────────────────────────────────────────
 
@@ -278,7 +280,7 @@ export default function PlaceFinder() {
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div
-              className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[10px] ${accent.bg}`}
+              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] ${accent.bg}`}
             >
               {mode === 'school' ? (
                 <GraduationCap size={18} className="text-white" />
@@ -306,6 +308,12 @@ export default function PlaceFinder() {
           </div>
 
           <div className="flex items-center gap-2">
+            <Link
+              href={'/school-data'}
+              className="flex items-center gap-x-1 rounded-lg bg-white p-2 text-sm text-amber-900"
+            >
+              <Database size={14} /> School Data
+            </Link>
             <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading} />
 
             <button

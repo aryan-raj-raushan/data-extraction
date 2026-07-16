@@ -1,11 +1,8 @@
-import { connectToDatabase } from '@/lib/db/schoolMongoDb';
-import { EXPORT_ROW_CAP, SCHOOL_COLLECTION, SCHOOL_DB_NAME } from '@/lib/school/school';
 import { NextRequest, NextResponse } from 'next/server';
+import { getSchoolPool } from '@/lib/db/schoolMysqlDb';
+import { EXPORT_ROW_CAP } from '@/lib/school/school';
 import ExcelJS from 'exceljs';
-
-function escapeRegex(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
+import type { RowDataPacket } from 'mysql2';
 
 export async function GET(req: NextRequest) {
   try {
@@ -15,16 +12,34 @@ export async function GET(req: NextRequest) {
     const block = searchParams.get('block')?.trim();
     const search = searchParams.get('search')?.trim();
 
-    const filter: Record<string, unknown> = {};
-    if (state) filter.state = { $regex: `^\\s*${escapeRegex(state)}\\s*$`, $options: 'i' };
-    if (district) filter.district = { $regex: `^\\s*${escapeRegex(district)}\\s*$`, $options: 'i' };
-    if (block) filter.block = { $regex: `^\\s*${escapeRegex(block)}\\s*$`, $options: 'i' };
-    if (search) filter.school_name = { $regex: escapeRegex(search), $options: 'i' };
+    const conditions: string[] = [];
+    const params: (string | number)[] = [];
+    if (state) {
+      conditions.push('state = ?');
+      params.push(state);
+    }
+    if (district) {
+      conditions.push('district = ?');
+      params.push(district);
+    }
+    if (block) {
+      conditions.push('block = ?');
+      params.push(block);
+    }
+    if (search) {
+      conditions.push('school_name LIKE ?');
+      params.push(`%${search}%`);
+    }
+    const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
 
-    const { db } = await connectToDatabase(SCHOOL_DB_NAME);
-    const collection = db.collection(SCHOOL_COLLECTION);
+    const pool = getSchoolPool();
 
-    const total = await collection.countDocuments(filter);
+    const [countRows] = await pool.query<RowDataPacket[]>(
+      `SELECT COUNT(*) as total FROM schools ${where}`,
+      params,
+    );
+    const total = Number(countRows[0]?.total ?? 0);
+
     if (total > EXPORT_ROW_CAP) {
       return NextResponse.json(
         {
@@ -34,10 +49,6 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    // Use the plain (non-streaming) workbook — ExcelJS's streaming writer
-    // requires a raw Node.js Writable stream which isn't available in the
-    // Next.js App Router edge-compatible runtime. Buffer mode is safe up to
-    // the EXPORT_ROW_CAP we already enforce above.
     const workbook = new ExcelJS.Workbook();
     const sheet = workbook.addWorksheet('Schools');
 
@@ -55,36 +66,27 @@ export async function GET(req: NextRequest) {
       { header: 'Status', key: 'school_status', width: 18 },
     ];
 
-    // Bold header row
     sheet.getRow(1).font = { bold: true };
-    sheet.getRow(1).fill = {
-      type: 'pattern',
-      pattern: 'solid',
-      fgColor: { argb: 'FFE8EAF6' }, // light indigo tint
-    };
+    sheet.getRow(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8EAF6' } };
 
-    const cursor = collection.find(filter).sort({ state: 1, district: 1, school_name: 1 });
-
-    for await (const doc of cursor) {
-      sheet.addRow({
-        udise_code: doc.udise_code ?? '',
-        school_name: doc.school_name ?? '',
-        state: doc.state ?? '',
-        district: doc.district ?? '',
-        block: doc.block ?? '',
-        village: doc.village ?? '',
-        location: doc.location ?? '',
-        state_mgmt: doc.state_mgmt ?? '',
-        school_category: doc.school_category ?? '',
-        school_type: doc.school_type ?? '',
-        school_status: (doc.school_status ?? '').trim(),
-      });
+    // Pull rows in chunks instead of one giant query — you can now legitimately
+    // have up to EXPORT_ROW_CAP rows match, which Mongo's toArray() never saw at this scale
+    const CHUNK = 5000;
+    for (let offset = 0; offset < total; offset += CHUNK) {
+      const [rows] = await pool.query<RowDataPacket[]>(
+        `SELECT udise_code, school_name, state, district, block, village, location,
+                state_mgmt, school_category, school_type, school_status
+         FROM schools ${where}
+         ORDER BY state, district, school_name
+         LIMIT ? OFFSET ?`,
+        [...params, CHUNK, offset],
+      );
+      rows.forEach((doc) => sheet.addRow(doc));
     }
 
-    // writeBuffer() returns a Buffer directly — no stream plumbing needed
     const buffer = await workbook.xlsx.writeBuffer();
 
-    return new NextResponse(buffer as any, {
+    return new NextResponse(buffer, {
       headers: {
         'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         'Content-Disposition': 'attachment; filename="school-data-export.xlsx"',

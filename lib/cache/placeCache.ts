@@ -1,20 +1,3 @@
-// lib/cache/placeCache.ts
-//
-// Collection: "place_cache"
-// Document shape now tracks PROGRESSIVE fetch state, not just a final array,
-// since results accumulate page-by-page across multiple user requests:
-//   {
-//     _id, cacheKey, mode,
-//     queries: string[],        // ordered phrasings to try (see buildQueries)
-//     activeQueryIndex: number, // which query we're currently paging through
-//     nextPageToken?: string,   // token to fetch the NEXT page of activeQuery
-//     data: Place[],            // all unique places collected so far, in order
-//     exhausted: boolean,       // true once no query/page has anything left
-//     cachedAt: number, updatedAt: Date,
-//   }
-//
-// TTL: 7 days — enforced in application logic.
-
 import { connectToDatabase } from '@/lib/db/mongodb';
 import type { LegacyPlace } from '@/lib/places/fetchPlaces';
 
